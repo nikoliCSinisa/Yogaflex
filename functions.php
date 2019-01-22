@@ -120,7 +120,21 @@ add_action( 'widgets_init', 'yogaflex_widgets_init' );
  * Enqueue scripts and styles.
  */
 function yogaflex_scripts() {
-	wp_enqueue_style( 'yogaflex-style', get_stylesheet_uri() );
+
+	// enqueue styles
+
+	wp_enqueue_style( 'yogaflex-style', get_stylesheet_uri(). 'style.css' );
+	wp_enqueue_style( 'yogaflex-style-linearicons', get_stylesheet_uri(). '/style/linearicons.css' );
+	wp_enqueue_style( 'yogaflex-style-font-awesome', get_stylesheet_uri(). '/style/font-awesome.min.css' );
+	wp_enqueue_style( 'yogaflex-style-bootstrap', get_stylesheet_uri(). '/style/bootstrap.css' );
+	wp_enqueue_style( 'yogaflex-style-magnific-popup', get_stylesheet_uri(). '/style/magnific-popup.css' );
+	wp_enqueue_style( 'yogaflex-style-nice-select', get_stylesheet_uri(). '/style/nice-select.css' );
+	wp_enqueue_style( 'yogaflex-style-animate', get_stylesheet_uri(). '/style/animate.min.css' );
+	wp_enqueue_style( 'yogaflex-style-carousel', get_stylesheet_uri(). '/style/owl.carousel.css' );
+	wp_enqueue_style( 'yogaflex-style-jquery', get_stylesheet_uri(). '/style/jquery-ui.css' );
+	wp_enqueue_style( 'yogaflex-style-main', get_stylesheet_uri(). '/style/main.css' );
+
+	// enqueue scripts
 
 	wp_enqueue_script( 'yogaflex-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
