@@ -1770,8 +1770,11 @@ h1, h2, h3, h4, h5, h6 {
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; }
-  .nav-menu li a.active, .nav-menu li a:hover {
+.nav-menu li a.active, .nav-menu li a:hover {
     color: #0093df !important; }
+
+.current-menu-item a {
+  color: #0093df !important; }
 
 .nav-menu li:hover > a {
   color: #0093df; }

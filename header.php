@@ -24,7 +24,7 @@
 <div id="page" class="site">
 	<!-- <a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'yogaflex' ); ?></a> -->
 
-	<header id="masthead" class="site-header">
+	<header id="header" >
 
 	<div class="header-top">
 			<div class="container">
@@ -47,34 +47,45 @@
 			</div>
 		</div>
 
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$yogaflex_description = get_bloginfo( 'description', 'display' );
-			if ( $yogaflex_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $yogaflex_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<div id="logo">
+					<?php
+					the_custom_logo();
+					if ( is_front_page() && is_home() ) :
+						?>
+						<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php
+					else :
+						?>
+						<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
+						<?php
+					endif;
+					$yogaflex_description = get_bloginfo( 'description', 'display' );
+					if ( $yogaflex_description || is_customize_preview() ) :
+						?>
+						<p class="site-description"><?php echo $yogaflex_description; /* WPCS: xss ok. */ ?></p>
+					<?php endif; ?>
+				</div>
+				
+				<nav id="nav-menu-container" >
+					<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php //esc_html_e( 'Primary Menu', 'yogaflex' ); ?></button>  -->
+					<?php
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'depth'	          => 2, // 1 = no dropdowns, 2 = with dropdowns.
+						'container'       => 'ul',
+						'container_class' => 'nav-menu sf-js-enabled sf-arrows',
+						'menu_class'      => 'nav-menu',
+						'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+						'walker'          => new WP_Bootstrap_Navwalker(),
+					) );
+					?>
+				</nav><!-- #site-navigation -->
+			</div>
 		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'yogaflex' ); ?></button> -->
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+		
+	</header><!-- #header -->
 
-	<div id="content" class="site-content">
+	<div id="home" class="banner-area relative">

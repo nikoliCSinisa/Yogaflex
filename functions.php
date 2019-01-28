@@ -44,7 +44,7 @@ if ( ! function_exists( 'yogaflex_setup' ) ) :
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'yogaflex' ),
+			'primary' => esc_html__( 'Primary', 'yogaflex' ),
 		) );
 
 		/*
@@ -124,6 +124,7 @@ function yogaflex_scripts() {
 	// enqueue styles
 
 	wp_enqueue_style( 'yogaflex-style', get_template_directory_uri(). 'style.css' );
+	wp_enqueue_style( 'yogaflex-style-google-fonts', 'https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700' );
 	wp_enqueue_style( 'yogaflex-style-linearicons', get_template_directory_uri(). '/style/linearicons.css' );
 	wp_enqueue_style( 'yogaflex-style-font-awesome', get_template_directory_uri(). '/style/font-awesome.min.css' );
 	wp_enqueue_style( 'yogaflex-style-bootstrap', get_template_directory_uri(). '/style/bootstrap.css' );
@@ -185,4 +186,7 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
