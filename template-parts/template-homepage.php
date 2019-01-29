@@ -14,8 +14,8 @@
 
 get_header();
 ?>
-<!-- start banner Area -->
-<section class="banner-area relative" id="home">
+	<!-- start banner Area -->
+	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
 		<div class="container-fluid">
 			<div class="row fullscreen d-flex align-items-center justify-content-between">
