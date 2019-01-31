@@ -58,12 +58,10 @@
 								<div class="info mt-20"></div>
 							</form>
 						</div>
-					</div>
-				</div>
+					</div>		
 			</div><!-- .row -->
 		</div><!-- .container -->
 
-		<!--<div class="site-info"> -->
 
 			<div class="footer-bottom row align-items-center">
 				<p class="footer-text m-0 col-lg-6 col-md-12">
@@ -93,7 +91,7 @@
 
 			</div><!-- .footer-bottom -->
 
-		<!--</div> .site-info -->
+		</div>
 	</footer>
 	<?php wp_footer(); ?>
 

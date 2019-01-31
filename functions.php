@@ -123,7 +123,7 @@ function yogaflex_scripts() {
 
 	// enqueue styles
 
-	wp_enqueue_style( 'yogaflex-style', get_template_directory_uri(). 'style.css' );
+	wp_enqueue_style( 'yogaflex-style', get_template_directory_uri(). '/style.css' );
 	wp_enqueue_style( 'yogaflex-style-google-fonts', 'https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700' );
 	wp_enqueue_style( 'yogaflex-style-linearicons', get_template_directory_uri(). '/style/linearicons.css' );
 	wp_enqueue_style( 'yogaflex-style-font-awesome', get_template_directory_uri(). '/style/font-awesome.min.css' );
