@@ -26,26 +26,26 @@
 
 	<header id="header" >
 
-	<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
-						<ul>
-							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-						</ul>
-					</div>
-					<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-						<a href="tel:+880 1234 654 953">
-							<span class="text">+880 1234 654 953</span>
-						</a>
-						<a class="book-now" href="#">Book Now</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
+							<ul>
+								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+								<li><a href="#"><i class="fa fa-behance"></i></a></li>
+							</ul>
+						</div><!-- .header-top-left -->
+						<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
+							<a href="tel:+880 1234 654 953">
+								<span class="text">+880 1234 654 953</span>
+							</a>
+							<a class="book-now" href="#">Book Now</a>
+						</div><!-- .header-top-right -->
+					</div><!-- .row -->
+				</div><!-- .container -->
+		</div><!-- .header-top -->
 
 		<div class="container main-menu">
 			<div class="row align-items-center justify-content-between d-flex">
@@ -66,7 +66,7 @@
 						?>
 						<p class="site-description"><?php echo $yogaflex_description; /* WPCS: xss ok. */ ?></p>
 					<?php endif; ?>
-				</div>
+				</div><!-- #logo -->
 				
 				<nav id="nav-menu-container" >
 					<!-- <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php //esc_html_e( 'Primary Menu', 'yogaflex' ); ?></button>  -->
@@ -82,8 +82,8 @@
 					) );
 					?>
 				</nav><!-- #site-navigation -->
-			</div>
-		</div><!-- .site-branding -->
+			</div><!-- .align-items-center -->
+		</div><!-- .container main-menu -->
 
 		
 	</header><!-- #header -->

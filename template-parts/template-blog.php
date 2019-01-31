@@ -95,40 +95,49 @@ get_header();
     <section class="post-content-area">
 		<div class="container">
 			<div class="row">
+				
+						<?php
+						if ( have_posts() ) :
+							
+							if ( is_home() && ! is_front_page() ) :
+								?>
+							<div class="col-lg-8 posts-list">
+								
+								<?php
+							endif;
 
-                <?php
-                if ( have_posts() ) :
+							/* Start the Loop */
+							while ( have_posts() ) : ?>
+								<div class="single-post row">
+									<div class="col-lg-9 col-md-9 ">
+								
+							<?php
+								the_post();
 
-                    if ( is_home() && ! is_front_page() ) :
-                        ?>
-                        <header>
-                            <h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-                        </header>
-                        <?php
-                    endif;
+								/*
+								* Include the Post-Type-specific template for the content.
+								* If you want to override this in a child theme, then include a file
+								* called content-___.php (where ___ is the Post Type name) and that will be used instead.
+								*/
+								get_template_part( 'template-parts/content', get_post_type() );
+							?>
+									</div> <!-- end post col -->
+								</div><!-- .single-post -->
+							<?php
+							endwhile;
 
-                    /* Start the Loop */
-                    while ( have_posts() ) :
-                        the_post();
+							the_posts_navigation();
 
-                        /*
-                        * Include the Post-Type-specific template for the content.
-                        * If you want to override this in a child theme, then include a file
-                        * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-                        */
-                        get_template_part( 'template-parts/content', get_post_type() );
+						else :
 
-                    endwhile;
+							get_template_part( 'template-parts/content', 'none' );
 
-                    the_posts_navigation();
+						endif;
+						?>
 
-                else :
-
-                    get_template_part( 'template-parts/content', 'none' );
-
-                endif;
-                ?>
-
+								
+							
+				</div> <!-- .posts-list -->
             </div><!-- .row -->
         </div><!-- .container -->
     </section><!-- .post-content-area-->            

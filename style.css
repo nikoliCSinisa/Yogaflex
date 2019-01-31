@@ -832,6 +832,20 @@ a:hover, a:active {
 	max-width: 100%;
 }
 
+.sidebar-widgets {
+	float: right;
+	margin-left: -100%;
+	max-width: 413px;
+	position: relative;
+	width: 29.4118%;
+}
+
+.site-content {
+	display: block;
+	float: left;
+	margin-left: 29.4118%;
+	width: 70.5882%;
+}
 /*--------------------------------------------------------------
 # Content
 --------------------------------------------------------------*/
