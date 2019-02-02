@@ -88,4 +88,4 @@
 		
 	</header><!-- #header -->
 
-	<div id="home" class="banner-area relative">
+

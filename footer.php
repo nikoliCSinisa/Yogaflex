@@ -10,9 +10,6 @@
  */
 
 ?>
-
-	</div><!-- #home -->
-
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div class="container">
@@ -59,8 +56,8 @@
 							</form>
 						</div>
 					</div>		
+				</div>
 			</div><!-- .row -->
-		</div><!-- .container -->
 
 
 			<div class="footer-bottom row align-items-center">
@@ -90,11 +87,10 @@
 				<!-- social icons end -->
 
 			</div><!-- .footer-bottom -->
-
 		</div>
 	</footer>
 	<?php wp_footer(); ?>
 
-</div><!-- #page -->
+
 </body>
 </html>
