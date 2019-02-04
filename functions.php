@@ -189,19 +189,3 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
-
-/* Register Sidebars
-function custom_sidebars() {
-
-	$args = array(
-		'class'         => 'col-lg-4 sidebar-widgets',
-		'name'          => __( 'sidebar-1', 'yogaflex' ),
-		'description'   => __( 'fast links area', 'yogaflex' ),
-		'before_widget' => '<div class="single-sidebar-widget search-widget">',
-		'after_widget'  => '</div>',
-	);
-	register_sidebar( $args );
-
-}
-add_action( 'widgets_init', 'custom_sidebars' );
-*/

@@ -17,6 +17,7 @@
 	<?php yogaflex_post_thumbnail(); ?>
 
 	<div class="entry-content">
+		<p>Da li je ovo prava strana?</p>
 		<?php
 		the_content();
 

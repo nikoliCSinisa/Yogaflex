@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Blog
+ * Template Name: Blog home
  *
  * This is the most generic template file in a WordPress theme
  * and one of the two required files for a theme (the other being style.css).
@@ -17,17 +17,18 @@ get_header();
 
     <!-- start banner Area -->
 	<section class="banner-area relative blog-home-banner" id="home">
-		<div class="overlay overlay-bg"></div>
-		<div class="container">
-			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content blog-header-content col-lg-12">
-					<h1 class="text-uppercase text-white">
-						<span>YogaFlex</span> to <br> Shape your body
-					</h1>
-					<a href="#" class="primary-btn mt-40">Become a Member</a>
-				</div>
-			</div>
-		</div>
+		<div class="overlay overlay-bg"></div><!-- .overlay -->
+			<div class="container">
+				<div class="row d-flex align-items-center justify-content-center">
+					<div class="about-content blog-header-content col-lg-12">
+						<h1 class="text-uppercase text-white">
+							<span>YogaFlex</span> to <br> Shape your body
+						</h1>
+						<a href="#" class="primary-btn mt-40">Become a Member</a>
+					</div><!-- .about-content -->
+				</div><!-- .row -->
+			</div><!-- .container -->
+		
 	</section>
     <!-- End banner Area -->
     
@@ -95,22 +96,20 @@ get_header();
     <section class="post-content-area">
 		<div class="container">
 			<div class="row">
-				
+				<div class="col-lg-8 posts-list">
 						<?php
 						if ( have_posts() ) :
 							
 							if ( is_home() && ! is_front_page() ) :
-								?>
-							<div class="col-lg-8 posts-list">
 								
-								<?php
 							endif;
 
 							/* Start the Loop */
 							while ( have_posts() ) : ?>
 								<div class="single-post row">
-									<div class="col-lg-9 col-md-9 ">
-								
+									<div class="col-lg-9 col-md-9 ">								
+										<ul class="tags">
+											<p><?php the_tags(); ?></p>
 							<?php
 								the_post();
 
@@ -119,11 +118,8 @@ get_header();
 								* If you want to override this in a child theme, then include a file
 								* called content-___.php (where ___ is the Post Type name) and that will be used instead.
 								*/
-								get_template_part( 'template-parts/content', get_post_type() );
-							?>
-									</div> <!-- end post col -->
-								</div><!-- .single-post -->
-							<?php
+								//get_template_part( 'template-parts/content', get_post_type() );
+							
 							endwhile;
 
 							the_posts_navigation();
@@ -134,7 +130,9 @@ get_header();
 
 						endif;
 						?>
-
+									</ul>
+								</div> <!-- .col-lg-9 -->
+							</div><!-- .single-post -->
 								
 							
 				</div> <!-- .posts-list -->
