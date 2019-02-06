@@ -9,24 +9,46 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+<!-- <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>> -->
+	<!--<header class="entry-header">
+		
+	</header> .entry-header -->
 
-	<?php yogaflex_post_thumbnail(); ?>
+	<div class="single-post row">
+		<div class="col-lg-3  col-md-3 meta-details">
 
-	<div class="entry-content">
-		<p>Da li je ovo prava strana?</p>
+		<ul class="tags">
+			<?php
+			$tags = get_tags();
+				if ( $tags ) :
+					foreach ( $tags as $tag ) : ?>
+						<li>
+							<a href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" title="<?php echo esc_attr( $tag->name ); ?>"><?php echo esc_html( $tag->name ); ?></a>
+						</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+		
+
+		<div class="col-lg-9 col-md-9 ">
+			<div class="feature-img">
+				<img class="img-fluid" src="<?php yogaflex_post_thumbnail(); ?>" alt="">
+			</div>
+
+		<a class="posts-title" href="blog-single.html"><?php  the_title( '<h3>', '</h3>' ); ?></a>
+
+	<!-- <div class="entry-content"> -->
+		<p class="excert">
 		<?php
-		the_content();
-
-		wp_link_pages( array(
+			the_content();
+		?>
+		</p>
+		<?php wp_link_pages( array(
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'yogaflex' ),
 			'after'  => '</div>',
-		) );
+		) );	
 		?>
-	</div><!-- .entry-content -->
+	</div><!-- .col-lg-9 -->
 
 	<?php if ( get_edit_post_link() ) : ?>
 		<footer class="entry-footer">
@@ -49,5 +71,8 @@
 			);
 			?>
 		</footer><!-- .entry-footer -->
-	<?php endif; ?>
-</article><!-- #post-<?php the_ID(); ?> -->
+			<?php endif; ?>
+
+		 </div><!-- .meta-details -->
+	</div>
+<!-- </article>#post-<?php the_ID(); ?> -->
