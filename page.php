@@ -15,7 +15,7 @@
 get_header();
 ?>
  
-
+<P>Ovo je page.php</P>
 		<?php
 		while ( have_posts() ) :
 			the_post();

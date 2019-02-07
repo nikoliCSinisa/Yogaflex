@@ -8,31 +8,22 @@
  */
 
 ?>
-	<!-- Start post-content Area -->
-	<section class="post-content-area">
-		<div class="container">
-			<div class="row">
-				<p>Ovo je content.php</p>
-				<div class="col-lg-8 posts-list">
+	<div class="col-lg-9 col-md-9 ">
 					<?php
-					if ( is_singular() ) :
-						the_title( '<h1 class="entry-title">', '</h1>' );
-					else :
-						the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+					if ( is_singular() ) : ?>
+						<div class="feature-img">
+							<img class="img-fluid" src="<?php yogaflex_post_thumbnail(); ?>" alt="slika">
+						</div>
+					<?php
+						the_title( '<h2 class="posts-title>', '</h2>' );
+					else :?>
+						<div class="feature-img">
+							<img class="img-fluid" src="<?php yogaflex_post_thumbnail(); ?>" alt="slika">
+						</div>
+					<?php
+						the_title( '<h3 class="posts-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' );
 					endif;
-
-					if ( 'post' === get_post_type() ) :
-						?>
-						<div class="entry-meta">
-							<?php
-							yogaflex_posted_on();
-							yogaflex_posted_by();
-							?>
-						</div><!-- .entry-meta -->
-					<?php endif; ?>
-				
-
-				<?php yogaflex_post_thumbnail(); ?>
+					 ?>
 
 				<div class="entry-content">
 					<?php
@@ -55,11 +46,10 @@
 					) );
 					?>
 				</div><!-- .entry-content -->
-				</div>
-			</div>
-		</div>
+				
+	</div><!-- .posts-list -->
 
 			<footer class="entry-footer">
 				<?php yogaflex_entry_footer(); ?>
 			</footer><!-- .entry-footer -->
-	</section><!-- #post-<?php the_ID(); ?> -->
+
