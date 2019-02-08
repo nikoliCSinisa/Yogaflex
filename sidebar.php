@@ -7,14 +7,14 @@
  * @package yogaflex
  */
 
-if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+if ( ! is_active_sidebar( 'yogabar' ) ) {
 	return;
 }
 ?>
 
 <div class="col-lg-4 sidebar-widgets">
 	<div class="widget-wrap">
-		<?php dynamic_sidebar( 'sidebar-1' ); ?>
+		<?php dynamic_sidebar( 'yogabar' ); ?>
 	</div><!-- .widget-wrap -->
 </div> <!-- .sidebar-widgets -->
 

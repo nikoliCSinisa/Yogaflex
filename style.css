@@ -834,7 +834,6 @@ a:hover, a:active {
 
 .sidebar-widgets {
 	float: right;
-	margin-left: -100%;
 	max-width: 413px;
 	position: relative;
 	width: 29.4118%;

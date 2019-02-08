@@ -102,12 +102,13 @@ get_header();
 			if ( is_home() && ! is_front_page() ) :
 		?>
 			<div class="col-lg-8 posts-list">
-				<div class="single-post row">
+				
 					<?php
 						/* Start the Loop */
 							while ( have_posts() ) :
 							the_post();
-					?>	
+					?>
+				<div class="single-post row">	
 					<div class="col-lg-3  col-md-3 meta-details">
 						<?php
 							if(get_the_tag_list()) {
@@ -120,7 +121,7 @@ get_header();
 									<p class="date col-lg-12 col-md-12 col-6"><a href="#"><?php yogaflex_posted_on(); ?></a> <span class="lnr lnr-calendar-full"></span></p>
 									<p class="view col-lg-12 col-md-12 col-6"><a href="#"><?php echo getPostViews(get_the_ID()); ?></a> <span class="lnr lnr-eye"></span></p>
 									<p class="comments col-lg-12 col-md-12 col-6"><a href="#"><?php comments_number(); ?></a> <span class="lnr lnr-bubble"></span></p>
-								<?php endif; ?>
+					<?php   endif;	 ?>
 							</div><!-- .user-details -->
 					
 					</div>
@@ -134,21 +135,17 @@ get_header();
 						get_template_part( 'template-parts/content', get_post_type() );
 
 					endwhile;
-
-					//the_posts_navigation();
 			endif;		
 		else :
 
 			get_template_part( 'template-parts/content', 'none' );
 
 		endif;
-				?>
+		?>
 
-<?php	get_sidebar(); ?>
-
+			</div><!-- .posts-list -->
+	<?php 	get_sidebar();	?>
 		</div><!-- .row -->
 	</div><!-- .container -->
 </section><!-- .post-content-area -->
-
-
-<?php get_footer(); ?>
+	<?php	get_footer(); 	?>

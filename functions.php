@@ -105,13 +105,13 @@ add_action( 'after_setup_theme', 'yogaflex_content_width', 0 );
  */
 function yogaflex_widgets_init() {
 	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'yogaflex' ),
-		'id'            => 'sidebar-1',
+		'name'          => esc_html__( 'Yogabar', 'yogaflex' ),
+		'id'            => 'yogabar',
 		'description'   => esc_html__( 'Add widgets here.', 'yogaflex' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
+		'before_widget' => '<div class="single-sidebar-widget %2$s-widget">',
+		'after_widget'  => '</div',
+		'before_title'  => '<h4 class="popular-title">',
+		'after_title'   => '</h4>',
 	) );
 }
 add_action( 'widgets_init', 'yogaflex_widgets_init' );
@@ -215,3 +215,18 @@ function getPostViews($postID){
     }
     return $count.' Views';
 }
+
+// Changing excerpt length
+function new_excerpt_length($length) {
+	return 60;
+	}
+
+add_filter('excerpt_length', 'new_excerpt_length');
+	 
+// Changing excerpt more
+function new_excerpt_more($more) {
+	global $post;
+	return '<p/><a class="primary-btn" href="'. get_permalink($post->ID) . '">View More</a>';
+	}
+
+add_filter('excerpt_more', 'new_excerpt_more');
