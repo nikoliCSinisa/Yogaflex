@@ -391,7 +391,7 @@ template {
 --------------------------------------------------------------*/
 body,
 button,
-input,
+
 select,
 optgroup,
 textarea {
@@ -558,27 +558,7 @@ input[type="submit"]:focus {
 	border-color: #aaa #bbb #bbb;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"],
-input[type="number"],
-input[type="tel"],
-input[type="range"],
-input[type="date"],
-input[type="month"],
-input[type="week"],
-input[type="time"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="color"],
-textarea {
-	color: #666;
-	border: 1px solid #ccc;
-	border-radius: 3px;
-	padding: 3px;
-}
+
 
 input[type="text"]:focus,
 input[type="email"]:focus,
