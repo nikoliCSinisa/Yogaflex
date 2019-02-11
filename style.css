@@ -594,15 +594,15 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
+	color: rgb(0, 0, 0);
 }
 
 a:visited {
-	color: purple;
+	color: rgb(0, 0, 0);
 }
 
 a:hover, a:focus, a:active {
-	color: midnightblue;
+	color: rgb(0, 0, 0);
 }
 
 a:focus {

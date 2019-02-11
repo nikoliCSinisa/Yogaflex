@@ -108,8 +108,8 @@ function yogaflex_widgets_init() {
 		'name'          => esc_html__( 'Yogabar', 'yogaflex' ),
 		'id'            => 'yogabar',
 		'description'   => esc_html__( 'Add widgets here.', 'yogaflex' ),
-		'before_widget' => '<div class="single-sidebar-widget %2$s-widget">',
-		'after_widget'  => '</div',
+		'before_widget' => '<div class="single-sidebar-widget %2$s">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="popular-title">',
 		'after_title'   => '</h4>',
 	) );
