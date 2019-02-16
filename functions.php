@@ -234,3 +234,6 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';
+
+// Include custom admin function file
+require get_template_directory() . '/inc/function-admin.php';
