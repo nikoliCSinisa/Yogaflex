@@ -237,3 +237,4 @@ require get_template_directory() . '/inc/widgets.php';
 
 // Include custom admin function file
 require get_template_directory() . '/inc/function-admin.php';
+require get_template_directory() . '/inc/enqueue.php';

@@ -1,0 +1,40 @@
+/*
+@package yogaflex
+*/
+
+.toplevel_page_yogaflex_theme{
+    background-color: rgb(0, 217, 255);
+}
+
+.yogaflex-general-form, .yogaflex-sidebar-preview{
+    display: block;
+    float: left;
+    font-family: "Roboto", sans-serif;
+}
+
+.yogaflex-sidebar-preview {
+    width: 280px;
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.yogaflex-sidebar{
+    display: block;
+    text-align: center;
+}
+
+h4.yogaflex-username{
+    font-weight: 300;
+    color: black;
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+p.yogaflex-title, p.yogaflex-about{
+    font-weight: 400;
+    color: rgb(128, 128, 128);
+    font-size: 14px;
+    margin: 0 0 20px;
+}
