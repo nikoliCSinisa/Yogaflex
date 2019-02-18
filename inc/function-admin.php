@@ -25,6 +25,7 @@ function yogaflex_add_admin_page(){
 add_action('admin_menu', 'yogaflex_add_admin_page' );
 
 function yogaflex_custom_settings(){
+    register_setting( 'yogaflex-settings-group', 'profile_picture' );
     register_setting( 'yogaflex-settings-group', 'first_name' );
     register_setting( 'yogaflex-settings-group', 'last_name' );
     register_setting( 'yogaflex-settings-group', 'user_description' );
@@ -36,6 +37,7 @@ function yogaflex_custom_settings(){
 
     add_settings_section( 'yogaflex-sidebar-options', 'Sidebar Option', 'yogaflex_sidebar_options', 'yogaflex_theme' );
 
+    add_settings_field( 'sidebar-profile-picture', 'Profile Picture', 'yogaflex_sidebar_profile', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-name', 'Full Name', 'yogaflex_sidebar_name', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-description', 'Description', 'yogaflex_sidebar_description', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-about', 'About author', 'yogaflex_sidebar_about', 'yogaflex_theme', 'yogaflex-sidebar-options' );
@@ -47,6 +49,12 @@ function yogaflex_custom_settings(){
 
 function yogaflex_sidebar_options(){
     echo 'Customize sidebar';
+}
+
+function yogaflex_sidebar_profile(){
+    $picture = esc_attr( get_option( 'profile_picture' ));
+    echo '<input type="button" class="button button-secondary" value="Upload Profile Picture" id="upload-button">
+    <input type="hidden" id="profile-picture" name="profile_picture" value="'.$picture.'">';
 }
 
 function yogaflex_sidebar_name(){
@@ -64,7 +72,7 @@ function yogaflex_sidebar_description(){
 
 function yogaflex_sidebar_about(){
     $about = esc_attr( get_option( 'user_about' ));
-    echo '<textarea type="text" name="user_about" value="'.$about.'" placeholder="Write something about You"></textarea>';
+    echo '<textarea type="text" name="user_about" placeholder="Write something about You">'.$about.'</textarea>';
 }
 
 function yogaflex_sidebar_facebook(){
