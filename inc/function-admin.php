@@ -15,7 +15,7 @@ function yogaflex_add_admin_page(){
     'yogaflex_theme_create_page', get_template_directory_uri().'/img/icon.png', 110);
 
     //Generate menu sub-menu pages
-    add_submenu_page('yogaflex_theme', 'Yogaflex Sidebar Options', 'General', 'manage_options', 'yogaflex_theme', 'yogaflex_theme_create_page' );
+    add_submenu_page('yogaflex_theme', 'About Author Options', 'Author', 'manage_options', 'yogaflex_theme', 'yogaflex_theme_create_page' );
     add_submenu_page('yogaflex_theme' , 'Yogaflex CSS Options', 'Custom CSS', 'manage_options', 'yogaflex_theme_css', 'yogaflex_theme_settings_page' );
 
     // Activate custom settings
@@ -48,7 +48,7 @@ function yogaflex_custom_settings(){
 }
 
 function yogaflex_sidebar_options(){
-    echo 'Customize sidebar';
+    echo 'Customize sidebar Widget for Author details';
 }
 
 function yogaflex_sidebar_profile(){

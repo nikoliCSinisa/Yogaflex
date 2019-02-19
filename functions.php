@@ -108,7 +108,7 @@ function yogaflex_widgets_init() {
 		'name'          => esc_html__( 'Yogabar', 'yogaflex' ),
 		'id'            => 'yogabar',
 		'description'   => esc_html__( 'Add widgets here.', 'yogaflex' ),
-		'before_widget' => '<div class="single-sidebar-widget %2$s">',
+		'before_widget' => '<div class="single-sidebar-widget %2$s-widget">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h4 class="popular-title">',
 		'after_title'   => '</h4>',
@@ -215,6 +215,9 @@ function getPostViews($postID){
     }
     return $count.' Views';
 }
+
+//Removing rel links count as views
+remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
 // Changing excerpt length
 function new_excerpt_length($length) {

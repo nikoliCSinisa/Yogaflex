@@ -2657,19 +2657,19 @@ body.mobile-nav-active #mobile-nav-toggle {
     content: "";
     clear: both;
     display: table; }
-  .widget-wrap .widget_text {
+  .widget-wrap .user-info-widget {
     text-align: center; }
-    .widget-wrap .widget_text a h4 {
+    .widget-wrap .user-info-widget a h4 {
       margin-top: 40px;
       margin-bottom: 5px;
       -webkit-transition: all 0.3s ease 0s;
       -moz-transition: all 0.3s ease 0s;
       -o-transition: all 0.3s ease 0s;
       transition: all 0.3s ease 0s; }
-    .widget-wrap .widget_text .social-links li {
+    .widget-wrap .user-info-widget .social-links li{
       display: inline-block;
       margin-bottom: 10px; }
-      .widget-wrap .widget_text .social-links li a {
+      .widget-wrap .user-info-widget .social-links li a{
         color: #222222;
         padding: 10px;
         font-size: 14px;
@@ -2677,7 +2677,7 @@ body.mobile-nav-active #mobile-nav-toggle {
         -moz-transition: all 0.3s ease 0s;
         -o-transition: all 0.3s ease 0s;
         transition: all 0.3s ease 0s; }
-        .widget-wrap .widget_text .social-links li a:hover {
+        .widget-wrap .user-info-widget .social-links li a:hover {
           color: #0093df; }
   .widget-wrap .popular-post-widget .popular-title {
     background: #0093df;
@@ -2705,6 +2705,25 @@ body.mobile-nav-active #mobile-nav-toggle {
         margin-bottom: 0px; }
   .widget-wrap .ads-widget img {
     width: 100%; }
+
+    .image-container{
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+  }
+  
+  .profile-picture{
+      width: 122px;
+      height: 122px;
+      overflow: hidden;
+      border-radius: 50%;
+      margin: 20px auto;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
   .widget-wrap .post-category-widget .category-title {
     background: #0093df;
     color: #fff;
