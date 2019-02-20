@@ -2620,7 +2620,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     .widget-wrap .single-sidebar-widget:last-child {
       border-bottom: none;
       margin-bottom: 0px; }
-  .widget-wrap .widget_search form.search-form input[type=text] {
+  .widget-wrap .search-widget form.search-form input[type=text] {
     color: #fff;
     padding: 10px 22px;
     font-size: 14px;
@@ -2630,19 +2630,19 @@ body.mobile-nav-active #mobile-nav-toggle {
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
     background: #0093df; }
-  .widget-wrap .widget_search ::-webkit-input-placeholder {
+  .widget-wrap .search-widget ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: #fff; }
-  .widget-wrap .widget_search ::-moz-placeholder {
+  .widget-wrap .search-widget ::-moz-placeholder {
     /* Firefox 19+ */
     color: #fff; }
-  .widget-wrap .widget_search :-ms-input-placeholder {
+  .widget-wrap .search-widget :-ms-input-placeholder {
     /* IE 10+ */
     color: #fff; }
-  .widget-wrap .widget_search :-moz-placeholder {
+  .widget-wrap .search-widget :-moz-placeholder {
     /* Firefox 18- */
     color: #fff; }
-  .widget-wrap .widget_search form.search-form button {
+  .widget-wrap .search-widget form.search-form button {
     float: left;
     width: 20%;
     padding: 10px;
@@ -2653,7 +2653,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     cursor: pointer;
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px; }
-  .widget-wrap .widget_search form.search-form::after {
+  .widget-wrap .search-widget form.search-form::after {
     content: "";
     clear: both;
     display: table; }

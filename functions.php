@@ -41,6 +41,7 @@ if ( ! function_exists( 'yogaflex_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+			add_image_size( 'img-fluid', 100, 60 );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
