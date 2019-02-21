@@ -211,12 +211,12 @@ class Yogaflex_Popular_Post_Widget extends WP_Widget{
                 while( $posts_query->have_posts() ): $posts_query->the_post();
                         echo ' <div class="single-post-list d-flex flex-row align-items-center">';
                            
-                                    echo '<div class="thumb" style="width: 100px; height: 60px;">';
-                                        yogaflex_post_thumbnail(100, 60, false);
+                                    echo '<div class="thumb">';
+                                        the_post_thumbnail( 'img-fluid' );
                                     echo '</div>
                                         <div class="details">';    
                                     echo '<a href="'. esc_url( get_permalink() ) .'"><h6>'.get_the_title().'</h6></a>';
-                                    echo '<p>02 Hours ago</p>
+                                    echo '<p>' . yogaflex_time_ago().'</p>
                                         </div>
                                 </div> ';
                 endwhile;    

@@ -2681,8 +2681,15 @@ body.mobile-nav-active #mobile-nav-toggle {
     padding: 12px 0px; }
   .widget-wrap .popular-post-widget .popular-post-list {
     margin-top: 30px; }
+    .widget-wrap .popular-post-widget .popular-post-list .thumb {
+      position: absolute;
+      width: 100px;
+      height: 60px;
+       }
     .widget-wrap .popular-post-widget .popular-post-list .thumb img {
-      width: 100%; }
+      width: 100px;
+      max-height: 100%;
+       }
   .widget-wrap .popular-post-widget .single-post-list {
     margin-bottom: 20px; }
     .widget-wrap .popular-post-widget .single-post-list .details {
