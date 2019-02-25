@@ -9,7 +9,7 @@
 
  
 /*
-    Search Widget
+   ========= Search Widget ===========
 */
 
 class Yogaflex_Search_Widget extends WP_Widget {
@@ -49,8 +49,9 @@ add_action( 'widgets_init', function() {
 
 
 
+
 /*
-    Author Profile Widget
+    ======== Author Profile Widget ===========
 */
 
  class Yogaflex_Profile_Widget extends WP_Widget {
@@ -119,8 +120,11 @@ add_action( 'widgets_init', function() {
      register_widget('Yogaflex_Profile_Widget');
  } );
 
+
+
+
 /*
-    Popular posts widget
+   ========== Popular posts widget ==============
 */
 
 // Counting posts views function type 2 - not added to single.php
@@ -231,4 +235,84 @@ class Yogaflex_Popular_Post_Widget extends WP_Widget{
 
 add_action( 'widgets_init', function() {
     register_widget('Yogaflex_Popular_Post_Widget');
+} );
+
+
+
+
+/*
+   ========== Category widget ==============
+*/
+
+class Yogaflex_Category_Widget extends WP_Widget {
+
+    //setup the widget name, description, etc ...
+    public function __construct(){
+        $widget_ops = array(
+            'classname' => 'post-category',
+            'description' => 'Yogaflex posts categories widget',
+        );
+        parent::__construct('yogaflex_category', 'Yogaflex Categories', $widget_ops);
+    }
+
+    // update options
+    public function update( $new_instance, $old_instance ){
+
+        $instance = array();
+        $instance[ 'title' ] = ( !empty( $new_instance[ 'title' ] ) ? strip_tags( $new_instance[ 'title' ] ) : '' );
+        return $instance;
+    }
+
+
+    //back-end display of widget
+    public function categoryForm( $instance ){
+
+        echo 'This is standard post categories form.';
+    }
+
+    //Function for displaying results in front-end of widget
+    function getMostViewedListing(){
+        
+        $cat_args = array(
+            'orderby'               => 'count',
+            'order'                 => 'DESC',
+            'show_count'            => 1,
+            'show_option_none'      => 'Nothing found :(',
+            'title_li'              => __( '' ),
+            'echo'                  => 0,
+            'style'                 => 'none'
+        );
+
+        $categories = get_categories( $cat_args );
+
+        if($categories){
+            echo '<ul class="cat-list">';
+
+            foreach($categories as $cat){
+                echo '<li><a class="d-flex justify-content-between" href="'.site_url().'/category/'.$cat->slug.'"><p>'.$cat->name.'</p><p>'.$cat->count.'</p></a></li>';
+            }  
+
+            echo '</ul>';
+        }
+
+    }
+
+    //front-end display of widget
+    public function widget( $args, $instance ){
+
+        extract ($args);
+
+        echo $args['before_widget'];
+        
+        echo '<h4 class="category-title">Post Catgories</h4>';
+
+        $this->getMostViewedListing();
+        echo $args ['after_widget'];
+
+    }
+
+}
+// activate widget by register custom class
+add_action( 'widgets_init', function() {
+    register_widget('Yogaflex_Category_Widget');
 } );
