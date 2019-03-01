@@ -188,8 +188,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-// Register Custom Navigation Walker
-require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
 // function to count post views.
 function setPostViews($postID) {
@@ -220,13 +218,17 @@ function getPostViews($postID){
 //Removing rel links count as views
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
+
+
 // Changing excerpt length
 function new_excerpt_length($length) {
 	return 60;
 	}
 
 add_filter('excerpt_length', 'new_excerpt_length');
-	 
+
+
+
 // Changing excerpt more
 function new_excerpt_more($more) {
 	global $post;
@@ -234,6 +236,8 @@ function new_excerpt_more($more) {
 	}
 
 add_filter('excerpt_more', 'new_excerpt_more');
+
+
 
 // Time ago calculating function
 function yogaflex_time_ago() {
@@ -302,9 +306,66 @@ function yogaflex_time_ago() {
 add_filter('the_time', 'yogaflex_time_ago');
 
 
+// Numeric posts pages navigation
+function yogaflex_numeric_posts_nav(){
+
+	if ( is_singular() )
+		return;
+
+	global $wp_query;
+
+	/** Stop executionif there's only 1 page */
+	if ( $wp_query->max_num_pages <= 1 )
+		return;
+
+	$paged = get_query_var( 'paged' ) ? absint ( get_query_var( 'paged' ) ) : 1;
+	$max = intval ( $wp_query->max_num_pages );
+
+	/** Add current page to the array */
+	if ( $paged >= 1 )
+		$links[] = $paged;
+
+	/** Add the pages around the current page to the array */
+	if ( $paged >= 2 ) {
+		$links[] = $paged - 1;
+	}
+
+	if ( ( $paged + 1 ) <= $max ) {
+		$links[] = $paged + 1;
+	}
+
+	echo '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
+
+	/** Previous Post Link */
+	if ( 1 < $paged && $paged <= $max )
+		printf ( '<li class="page-item"><a href="%s" class="page-link" aria-label="Previous"><span aria-hidden="true"><span class="lnr lnr-chevron-left"></span>
+		</span></a></li>', get_pagenum_link ( $paged - 1 ) );
+
+	/** Current page, plus 2 pages in either direction */
+	sort( $links );
+	foreach ( (array) $links as $link ) {
+		$class = $paged == $link ? ' active ' : '';
+		printf ( '<li class="page-item %s" ><a href="%s" class="page-link">0%s</a></li>', $class, esc_url( get_pagenum_link ( $link ) ), $link );
+	}
+
+	/** Next Post Link */
+	if ( $paged < $max )
+		printf( '<li class="page-item"><a href="%s" class="page-link" aria-label="Next"><span aria-hidden="true"><span class="lnr lnr-chevron-right"></span>
+		</span></a></li>', get_pagenum_link ( $paged + 1 ) );
+
+	echo '</ul></nav>';
+
+}
+
+
+
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';
 
 // Include custom admin function file
 require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
+
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';

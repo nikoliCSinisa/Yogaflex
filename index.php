@@ -103,11 +103,11 @@ get_header();
 		?>
 			<div class="col-lg-8 posts-list">
 				
-					<?php
-						/* Start the Loop */
-							while ( have_posts() ) :
-							the_post();
-					?>
+			<?php
+				/* Start the Loop */
+				while ( have_posts() ) :
+					the_post();
+			?>
 				<div class="single-post row">	
 					<div class="col-lg-3  col-md-3 meta-details">
 						<?php
@@ -126,7 +126,7 @@ get_header();
 					
 					</div>
 					
-						<?php
+					<?php
 						/*
 						* Include the Post-Type-specific template for the content.
 						* If you want to override this in a child theme, then include a file
@@ -135,6 +135,10 @@ get_header();
 						get_template_part( 'template-parts/content', get_post_type() );
 
 					endwhile;
+
+					/** Add numeric pagination */
+					yogaflex_numeric_posts_nav();
+
 			endif;		
 		else :
 
