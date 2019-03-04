@@ -2824,6 +2824,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     background: #fff;
     padding: 4px 14px;
     margin-bottom: 10px;
+    margin-right: 3px;
     -webkit-transition: all 0.3s ease 0s;
     -moz-transition: all 0.3s ease 0s;
     -o-transition: all 0.3s ease 0s;

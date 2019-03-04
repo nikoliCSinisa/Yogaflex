@@ -188,6 +188,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * 		==============================================================================
+ * 									COUNTING POST VIEWS
+ * 		==============================================================================
+ */
 
 // function to count post views.
 function setPostViews($postID) {
@@ -219,6 +224,13 @@ function getPostViews($postID){
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );
 
 
+/**		============================  COUNTNG POSTS VIEW END  =============================== */
+
+/**
+ * 		====================================================================================
+ * 									EXCERPT LENGTH FUNCTIONS
+ * 		====================================================================================
+ */
 
 // Changing excerpt length
 function new_excerpt_length($length) {
@@ -237,6 +249,15 @@ function new_excerpt_more($more) {
 
 add_filter('excerpt_more', 'new_excerpt_more');
 
+/**		============================  EXCERPT LENGTH END  =================================== */
+
+
+/**
+ * 		================================================================================
+ * 									TIME AGO POSTS PUBLISHED
+ * 		================================================================================
+ * 
+ */
 
 
 // Time ago calculating function
@@ -306,6 +327,15 @@ function yogaflex_time_ago() {
 add_filter('the_time', 'yogaflex_time_ago');
 
 
+/**		================================ TIME AGO END ==================================== */
+
+
+/**
+ * 		=============================================================================================
+ * 											NUMERIC PAGINATION
+ * 		=============================================================================================
+ */		
+
 // Numeric posts pages navigation
 function yogaflex_numeric_posts_nav(){
 
@@ -341,7 +371,7 @@ function yogaflex_numeric_posts_nav(){
 		printf ( '<li class="page-item"><a href="%s" class="page-link" aria-label="Previous"><span aria-hidden="true"><span class="lnr lnr-chevron-left"></span>
 		</span></a></li>', get_pagenum_link ( $paged - 1 ) );
 
-	/** Current page, plus 2 pages in either direction */
+	/** Current page, plus pages in either direction */
 	sort( $links );
 	foreach ( (array) $links as $link ) {
 		$class = $paged == $link ? ' active ' : '';
@@ -357,7 +387,7 @@ function yogaflex_numeric_posts_nav(){
 
 }
 
-
+/**		================================ END NUMERIC PAGINATION ===================================== */
 
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';

@@ -47,9 +47,6 @@ add_action( 'widgets_init', function() {
 } );
 
 
-
-
-
 /*
     ======== Author Profile Widget ===========
 */
@@ -241,7 +238,7 @@ add_action( 'widgets_init', function() {
 
 
 /*
-   ========== Category widget ==============
+   ================= Category widget ======================
 */
 
 class Yogaflex_Category_Widget extends WP_Widget {
@@ -315,4 +312,79 @@ class Yogaflex_Category_Widget extends WP_Widget {
 // activate widget by register custom class
 add_action( 'widgets_init', function() {
     register_widget('Yogaflex_Category_Widget');
+} );
+
+
+/*
+        ========================== Tag Clouds Widget =====================================
+*/
+class Yogaflex_Tag_Clouds_Widget extends WP_Widget {
+
+    //setup the widget name, description, etc ...
+    public function __construct(){
+        $widget_ops = array(
+            'classname' => 'tag-cloud',
+            'description' => 'Yogaflex tag cloud widget',
+        );
+        parent::__construct('yogaflex_tag_clouds', 'Yogaflex Tag Clouds', $widget_ops);
+    }
+
+    // update options
+    public function update( $new_instance, $old_instance ){
+
+        $instance = array();
+        $instance[ 'title' ] = ( !empty( $new_instance[ 'title' ] ) ? strip_tags( $new_instance[ 'title' ] ) : '' );
+        return $instance;
+    }
+
+
+    //back-end display of widget
+    public function tagClouds( $instance ){
+
+        echo 'This is standard tag clouds form.';
+    }
+
+    //Function for displaying results in front-end of widget
+    function getTagClouds(){
+        
+        $tag_args = array(
+            'orderby'               => 'name',
+            'order'                 => 'ASC'
+        );
+
+        $tags = get_tags ( $tag_args );
+
+        if ( $tags ) :
+
+            echo '<ul>';
+
+            foreach($tags as $tag){
+                $tag_link = get_tag_link( $tag->term_id );
+                echo '<li><a href="' . $tag_link . '" title="' . $tag->name . '">' . $tag->name . ' </a></li>';
+            } 
+
+            echo '</ul>' ;
+
+        endif;
+        }
+
+
+    //front-end display of widget
+    public function widget( $args, $instance ){
+
+        extract ($args);
+
+        echo $args['before_widget'];
+        
+        echo '<h4 class="tagcloud-title">Tag Clouds</h4>';
+
+        $this->getTagClouds();
+        echo $args ['after_widget'];
+
+    }
+
+}
+// activate widget by register custom class
+add_action( 'widgets_init', function() {
+    register_widget('Yogaflex_Tag_Clouds_Widget');
 } );
