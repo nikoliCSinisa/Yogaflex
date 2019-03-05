@@ -8,7 +8,7 @@
  */
 
 ?>
-
+<P>Ovo je searchform.php</P>
 <?php $unique_id = esc_attr( wp_unique_id( 'search-form' ) ); ?>
 
 <form method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">

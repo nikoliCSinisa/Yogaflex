@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts
+ * The template for displaying single post
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
@@ -9,32 +9,81 @@
 
 get_header();
 ?>
+	<!-- start banner Area -->
+	<section class="banner-area relative about-banner" id="home">
+		<img class="cta-img img-fluid" src=" <?php bloginfo('template_url'); ?> /img/cta-img.png" alt="">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="about-content col-lg-12">
+					<h1>
+						Blog Details
+					</h1>
+					<p class="link-nav"><a href="index.html">Home </a>
+						<span class="lnr lnr-arrow-right"></span>
+						<a href="blog-home.html">
+							Blog
+						</a>
+						<span class="lnr lnr-arrow-right"></span>
+						<a href="blog-single.html">
+							Blog Details
+						</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-	<p>Ovo je single.php</p>
-		<?php
-		while ( have_posts() ) :
-			the_post();
+	<!-- Start post-content Area -->
+	<section class="post-content-area single-post-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 posts-list">
+					<div class="single-post row">
+				<?php
+							while ( have_posts() ) :
+								the_post();
+									
+									/* Set the counter for number of views */
+									setPostViews(get_the_ID());
 
-				/* Set the counter for number of views */
-				setPostViews(get_the_ID());
+								get_template_part( 'template-parts/content-single', get_post_type() );
 
-			get_template_part( 'template-parts/content', get_post_type() );
+					echo '</div>';
 
-			the_post_navigation();
+				?>
+						<div class="navigation-area">
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+									<?php the_post_navigation(); ?>
+								</div>
+							</div>
+						</div>
+				
+				
+				<?php					
+								echo '<div class="comment-form"><form>';
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+								// If comments are open or we have at least one comment, load up the comment template.
+								if ( comments_open() || get_comments_number() ) :
+									comments_template();
+								endif;
 
-		endwhile; // End of the loop.
-		?>
+								echo '</form></div>';
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+							endwhile; // End of the loop.
+						
+				echo '</div>';
 
-<?php
-get_sidebar();
+					get_sidebar();
+				?>
+						
+			</div>
+		</div>
+	</section>
+	<!-- End post-content Area -->
+
+<?php	
+
 get_footer();

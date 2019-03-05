@@ -13,15 +13,16 @@
 	<!--<header class="entry-header">
 		
 	</header> .entry-header -->
-
+	<P>Ovo je content-page.php</P>
 	<div class="single-post row">
 		<div class="col-lg-3  col-md-3 meta-details">
 
 		<ul class="tags">
-			<?php
+		<?php
 			$tags = get_tags();
 				if ( $tags ) :
-					foreach ( $tags as $tag ) : ?>
+					foreach ( $tags as $tag ) : 
+		?>
 						<li>
 							<a href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" title="<?php echo esc_attr( $tag->name ); ?>"><?php echo esc_html( $tag->name ); ?></a>
 						</li>

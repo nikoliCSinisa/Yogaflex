@@ -12,7 +12,7 @@ get_header();
 
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main">
-
+		<P>Ovo je search.php</P>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
