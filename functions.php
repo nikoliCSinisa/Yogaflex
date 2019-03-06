@@ -389,6 +389,51 @@ function yogaflex_numeric_posts_nav(){
 
 /**		================================ END NUMERIC PAGINATION ===================================== */
 
+
+/**
+ * 		=============================================================================================
+ * 								SINGLE POST NAVIGATION PREV/NEXT
+ * 		=============================================================================================
+ */
+
+function yogaflex_posts_navigation( $args = array() ) {
+		        $navigation = '';
+		       
+		                $args = wp_parse_args( $args, array(
+							'prev_text'                  => __( '%link' ),
+							'next_text'                  => __( '%link' ),
+							'in_same_term'               => true,
+							'taxonomy'                   => __( 'post_tag' ),
+							'screen_reader_text' => __( 'Continue Reading' ),
+							) 
+						);
+		
+		                $next_link = get_previous_post_link( '<h4>' . $args['next_text'] . '</h4>' );
+		                $prev_link = get_next_post_link( '<h4>' .$args['prev_text'] . '</h4>' );
+		
+		                if ( $prev_link ) {
+								$navigation .= '<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+												<div class="detials"><p>Prev Post</p>' . $prev_link . '</div></div>';
+						}
+						else{
+								$navigation .= '<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center"></div>';
+						}
+		
+		                if ( $next_link ) {
+								$navigation .= '<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+								<div class="detials"><p>Next Post</p>' . $next_link . '</div></div>';
+						}
+						else{
+								$navigation .= '<div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center"></div>';
+						}
+		      
+		
+				return $navigation;
+	}
+
+
+ /**	============================= SINGLE POST NAVIGATION END =================================== */
+
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';
 

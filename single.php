@@ -55,9 +55,14 @@ get_header();
 				?>
 						<div class="navigation-area">
 							<div class="row">
-								<div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-									<?php the_post_navigation(); ?>
-								</div>
+								
+									<?php 
+									
+									// Call a custom prev/next post navigation function
+									 echo yogaflex_posts_navigation();
+
+									?>
+								
 							</div>
 						</div>
 				

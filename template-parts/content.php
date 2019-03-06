@@ -13,6 +13,7 @@
 		<?php	if ( is_singular() ) : 	?>
 				<div class="feature-img">
 					<?php yogaflex_post_thumbnail(); ?>
+					<p>Ovo je content.php</p>
 				</div>
 			<?php	the_title( '<h2 class="posts-title>', '</h2>' );
 
@@ -29,7 +30,7 @@
 
 			<p class="excert">
 				<?php	the_excerpt();	?>
-			</p><!-- .excert -->
+			</p><!-- .excert --> 
 	</div><!-- .col-lg-9 -->
 </div><!-- .single-post row -->
 
