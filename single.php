@@ -68,24 +68,22 @@ get_header();
 				
 				
 				<?php					
-								echo '<div class="comment-form"><form>';
 
 								// If comments are open or we have at least one comment, load up the comment template.
 								if ( comments_open() || get_comments_number() ) :
 									comments_template();
 								endif;
 
-								echo '</form></div>';
-
 							endwhile; // End of the loop.
 						
-				echo '</div>';
-
-					get_sidebar();
 				?>
-						
-			</div>
-		</div>
+
+				</div> <!-- .posts-list -->	
+
+				<?php	get_sidebar();  ?>
+
+			</div> <!-- .row -->
+		</div> <!-- .container -->
 	</section>
 	<!-- End post-content Area -->
 

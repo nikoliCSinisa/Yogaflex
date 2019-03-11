@@ -18,44 +18,40 @@
 if ( post_password_required() ) {
 	return;
 }
-?>
 
-<div id="comments" class="comments-area">
-<P>Ovo je comments.php</P>
-	<?php
+echo '<div class="comments-area">';
 	// You can start editing here -- including this comment!
 	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
+
 			$yogaflex_comment_count = get_comments_number();
-			if ( '1' === $yogaflex_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'yogaflex' ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $yogaflex_comment_count, 'comments title', 'yogaflex' ) ),
-					number_format_i18n( $yogaflex_comment_count ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			}
+
+			echo '<h4>';
+				printf( 
+					// translator: 1: comment count number
+					esc_html( _nx( '%1$s Comment', '%1$s Comments', $yogaflex_comment_count, 'yogaflex' ) ),
+					number_format_i18n( $yogaflex_comment_count )
+				);	
 			?>
-		</h2><!-- .comments-title -->
+			</h4>
 
 		<?php the_comments_navigation(); ?>
 
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
-			?>
-		</ol><!-- .comment-list -->
+		<div class="comment-list">
+			<div class="single-comment justify-content-between d-flex">	
+							<?php
+							wp_list_comments( array(
+								'style'      		=> 'p',
+								'short_ping' 		=> false,
+								'type'		 		=> 'all',
+								'reply_text' 		=> 'Reply',
+								'page'		 		=> '',
+								'per_page'	 		=> '',
+								'avatar_size'		=> 60,
+								'echo'				=> true
+							) );
+							?>
+			</div><!-- .single-commet -->
+		</div><!-- .comment-list -->
 
 		<?php
 		the_comments_navigation();
@@ -68,8 +64,11 @@ if ( post_password_required() ) {
 		endif;
 
 	endif; // Check for have_comments().
+?>
 
-	comment_form();
-	?>
+		</div><!-- .comments-area -->
 
-</div><!-- #comments -->
+		<div class="comment-form">
+			<?php	comment_form();		?>
+		</div>
+
