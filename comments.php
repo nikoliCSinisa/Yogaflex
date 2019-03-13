@@ -34,23 +34,13 @@ echo '<div class="comments-area">';
 			?>
 			</h4>
 
-		<?php the_comments_navigation(); ?>
+	<?php 	the_comments_navigation(); 
 
-		<div class="comment-list">
-			<div class="single-comment justify-content-between d-flex">	
-							<?php
-							wp_list_comments( array(
-								'style'      		=> 'p',
-								'short_ping' 		=> false,
-								'type'		 		=> 'all',
-								'reply_text' 		=> 'Reply',
-								'page'		 		=> '',
-								'per_page'	 		=> '',
-								'avatar_size'		=> 60,
-								'echo'				=> true
-							) );
-							?>
-			</div><!-- .single-commet -->
+			wp_list_comments( array(
+				'callback' 		=> 'yogaflex_comments'
+			) );
+	?>
+			
 		</div><!-- .comment-list -->
 
 		<?php

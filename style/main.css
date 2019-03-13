@@ -2367,6 +2367,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0; }
 .single-blog a {
   color: #222222; }
+  .user .thumb .avatar{
+    width: 60px !important;
+    height: 60px !important;
+  }
 
 /*--------- end blog Area -------------*/
 /*-------- Start Common Page Style   -------------*/

@@ -524,6 +524,8 @@ require get_template_directory() . '/inc/widgets.php';
 require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
 
-
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
+
+// Include yogaflex comments file
+require_once( get_template_directory() .'/inc/yogaflex-comments.php' );
