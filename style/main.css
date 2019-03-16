@@ -2367,7 +2367,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0; }
 .single-blog a {
   color: #222222; }
-  .user .thumb .avatar{
+  .d-flex .thumb img{
     width: 60px !important;
     height: 60px !important;
   }
@@ -2942,7 +2942,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     padding-bottom: 30px; }
     .comments-area .comment-list:last-child {
       padding-bottom: 0px; }
-    .comments-area .comment-list.left-padding {
+    .comments-area .comment-list.left-padding .children{
       padding-left: 25px; }
     @media (max-width: 413px) {
       .comments-area .comment-list .single-comment h5 {

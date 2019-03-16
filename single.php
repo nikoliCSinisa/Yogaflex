@@ -49,10 +49,10 @@ get_header();
 									setPostViews(get_the_ID());
 
 								get_template_part( 'template-parts/content-single', get_post_type() );
+								?>
+					</div><!-- .single-post -->
 
-					echo '</div>';
-
-				?>
+				
 						<div class="navigation-area">
 							<div class="row">
 								

@@ -41,7 +41,7 @@ echo '<div class="comments-area">';
 			) );
 	?>
 			
-		</div><!-- .comment-list -->
+		
 
 		<?php
 		the_comments_navigation();
@@ -55,10 +55,9 @@ echo '<div class="comments-area">';
 
 	endif; // Check for have_comments().
 ?>
-
-		</div><!-- .comments-area -->
-
+	
 		<div class="comment-form">
 			<?php	comment_form();		?>
-		</div>
+		</div><!-- .comment-form -->
 
+	</div><!-- .comments-area -->

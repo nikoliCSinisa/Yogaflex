@@ -7,7 +7,11 @@
  * @package yogaflex
  */
 
-
+/**
+ * =======================================================================================
+ *                                CUSTOM COMMENT DISPLAY
+ * =======================================================================================
+ */
 function yogaflex_comments( $comment, $args, $depth ) {
 	global $post;
 	$author_id = $post->post_author;
@@ -17,7 +21,7 @@ function yogaflex_comments( $comment, $args, $depth ) {
 		case 'trackback' :
         // Display trackbacks differently than normal comments. 
 ?>
-	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>>
+	<li id="comment-<?php comment_ID(); ?>" <?php comment_class(); ?>></li>
 		<div class="pingback-entry"><span class="pingback-heading"><?php esc_html_e( 'Pingback:', 'yogaflex' ); ?></span> <?php comment_author_link(); ?></div>
 <?php
 		break;
@@ -76,5 +80,31 @@ function yogaflex_comments( $comment, $args, $depth ) {
 
 	<?php
 		break;
-	endswitch; // End comment_type check.
+    endswitch; // End comment_type check.
+    
+    echo '</div><!-- .comment-list -->';
 }
+
+/**  ========================= END CUSTOM COMMENT DISPLAY =================================== */
+
+
+/**
+ * ===========================================================================================
+ *                                  CUSTOM COMMENT FORM
+ * ===========================================================================================
+ */
+
+ // Customize comment fields args
+ $comment_fields_args = array(
+     'class_form'           => '',
+     'title_reply'          => 'Leave a Comment',
+     'fields'               => apply_filters( 'yogaflex_comment_form', array(
+                    'author'            => '<div class="form-group form-inline">' . '<div class="form-group col-lg-6 col-md-12 name">' . __( 'Name' ) . ( $req ? '' : '' ) .
+                                            '<input type="text" class="form-control" id="name" placeholder="Enter Name" 
+                                            onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter Name\'" 
+                                            value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="50"' . $html_req . ' /></div>',
+                    'email'             => '',
+
+     )
+     )
+ );
