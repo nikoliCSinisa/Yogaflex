@@ -113,26 +113,36 @@ function yogaflex_comment_form_args(){
      'title_reply'          => 'Leave a Comment',
      'fields'               => apply_filters( 'yogaflex_comment_fields', array(
                         'author'                => '<div class="form-group form-inline"><div class="form-group col-lg-6 col-md-12 name">' .
-                                                '<input type="text" class="form-control" id="name" placeholder="'. esc_attr__( 'Enter Name', 'text-domain' ) . ( $req ? '' : '' ) .'" 
-                                                onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
+                                                '<input type="text" class="form-control" id="name" placeholder="'. esc_attr__( 'Enter Name', 'text-domain' ) . 
+                                                ( $req ? '' : '' ) .'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter Name\'" 
                                                 value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="50"' . $html_req . ' /></div>',
                         'email'                 => '<div class="form-group col-lg-6 col-md-12 email">' .
-                                                '<input type="email" class="form-control" id="email" placeholder="'. esc_attr__( 'Enter email adress', 'text-domain' ) . ( $req ? '' : '' ) .'" 
-                                                onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
+                                                '<input type="email" class="form-control" id="email" placeholder="'. esc_attr__( 'Enter email adress', 'text-domain' ) . 
+                                                ( $req ? '' : '' ) .'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
                                                 value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="150"' . $html_req . ' /></div></div>',
                         'subject'               => '<div class="form-group"><input type="text" class="form-control" id="subject" placeholder="'.
-                                                esc_attr__( 'Subject', 'text-domain' ) . ( $req ? '' : '' ) .'"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
-                                                value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150"' . $html_req . ' /></div>',
+                                                esc_attr__( 'Subject', 'text-domain' ) . '"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
+                                                value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" /></div>',
                         'comment_field'         => '<div class="form-group"><textarea class="form-control mb-10" rows="5" name="message" placeholder="'
-                                                . _x( 'Message', 'noun' ) . ( $req ? '' : '' ) .'" onfocus="this.placeholder = \'\'" 
-                                                onblur="this.placeholder = \'\'" cols="45" rows="8" required= "required"></textarea></div>',
+                                                . _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
+                                                onblur="this.placeholder = \'\'" cols="45" rows="8" ></textarea></div>',
                         'comment_notes_after'   => '<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>'             
                     )
                 )
-     
  );
 
  // Merge arguments
  $args = array_merge( $args, $comment_fields_args );
  return $args;
 }
+add_filter( 'comment_form_default_fields', 'yogaflex_comment_form_args' );
+
+function add_comment_meta_values($comment_id) {
+ 
+    if(isset($_POST['subject'])) {
+        $subject = wp_filter_nohtml_kses($_POST['subject']);
+        add_comment_meta($comment_id, 'subject', $subject, false);
+    }
+ 
+}
+add_action ('comment_post', 'add_comment_meta_values', 1);

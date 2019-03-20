@@ -46,7 +46,7 @@ echo '<div class="comments-area">';
 		<?php
 		the_comments_navigation();
 
-		echo '</div><!-- .comments-area -->';
+		
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
@@ -56,6 +56,7 @@ echo '<div class="comments-area">';
 		endif;
 
 	endif; // Check for have_comments().
+	echo '</div><!-- .comments-area -->';
 ?>
 	
 		<div class="comment-form">
