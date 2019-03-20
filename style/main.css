@@ -2367,7 +2367,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0; }
 .single-blog a {
   color: #222222; }
-  .d-flex .thumb img{
+  .avatar .avatar-60 .photo{
     width: 60px !important;
     height: 60px !important;
   }
@@ -3019,6 +3019,9 @@ body.mobile-nav-active #mobile-nav-toggle {
     /* Firefox 18- */
     font-size: 13px;
     color: #777; }
+  .comment-form button{
+    padding: 0 30px 0;
+  }
   .comment-form .primary-btn {
     border-radius: 0px !important;
     border: 1px solid transparent;
@@ -3029,6 +3032,8 @@ body.mobile-nav-active #mobile-nav-toggle {
       background: transparent;
       border-color: #0093df !important;
       color: #0093df !important; }
+
+    .form-submit {display: none;}
 
 /*============ End Blog Single Styles  =============*/
 /* =================================== */

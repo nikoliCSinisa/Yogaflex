@@ -46,6 +46,8 @@ echo '<div class="comments-area">';
 		<?php
 		the_comments_navigation();
 
+		echo '</div><!-- .comments-area -->';
+
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
@@ -57,7 +59,5 @@ echo '<div class="comments-area">';
 ?>
 	
 		<div class="comment-form">
-			<?php	comment_form();		?>
+			<?php	comment_form(yogaflex_comment_form_args());	?>
 		</div><!-- .comment-form -->
-
-	</div><!-- .comments-area -->

@@ -517,6 +517,22 @@ function yogaflex_posts_navigation( $args = array() ) {
 
   /**	======================== COMMENT LIST CUSTOMIZATION END ===================================== */
 
+  /** 
+  * =================================================================================================
+  *								COMMENT FORM CUSTOMIZATION
+  * =================================================================================================
+  */
+
+  //Remove unnesessary fields from comment form
+  function yogaflex_remove_comment_fields( $fields ) {
+	unset( $fields['comment'] );
+	return $fields;
+	}
+	 
+	add_filter( 'comment_form_fields', 'yogaflex_remove_comment_fields' );
+
+  /**	======================== COMMENT FORM CUSTOMIZATION END ===================================== */
+
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';
 
@@ -527,5 +543,6 @@ require get_template_directory() . '/inc/enqueue.php';
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/class-wp-bootstrap-navwalker.php';
 
-// Include yogaflex comments file
+// Include yogaflex comments list file
 require_once( get_template_directory() .'/inc/yogaflex-comments.php' );
+
