@@ -94,14 +94,15 @@ function yogaflex_comments( $comment, $args, $depth ) {
  *                                  CUSTOM COMMENT FORM
  * ===========================================================================================
  */
+add_filter( 'comment_form_default_fields', 'yogaflex_comment_form_args' );
 
 function yogaflex_comment_form_args(){
     // Comment fields args variables
     $commenter = wp_get_current_commenter();
     $req = get_option( 'require_name_email' );
     $args = wp_parse_args( $args );
-    $html_req = ( $req ? 'required="required"' : '' );
-   
+    $html_req = ( $req ? " aria-required='true'" : '' );
+
  // Custom comment fields args
  $comment_fields_args = array(
      'class_form'           => '',
@@ -125,7 +126,7 @@ function yogaflex_comment_form_args(){
                                                 value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" /></div>',
                         'comment_field'         => '<div class="form-group"><textarea class="form-control mb-10" rows="5" name="message" placeholder="'
                                                 . _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
-                                                onblur="this.placeholder = \'\'" cols="45" rows="8" ></textarea></div>',
+                                                onblur="this.placeholder = \'Message\'" cols="45" rows="8" ></textarea></div>',
                         'comment_notes_after'   => '<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>'             
                     )
                 )
@@ -135,14 +136,5 @@ function yogaflex_comment_form_args(){
  $args = array_merge( $args, $comment_fields_args );
  return $args;
 }
-add_filter( 'comment_form_default_fields', 'yogaflex_comment_form_args' );
 
-function add_comment_meta_values($comment_id) {
- 
-    if(isset($_POST['subject'])) {
-        $subject = wp_filter_nohtml_kses($_POST['subject']);
-        add_comment_meta($comment_id, 'subject', $subject, false);
-    }
- 
-}
-add_action ('comment_post', 'add_comment_meta_values', 1);
+

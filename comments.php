@@ -55,8 +55,10 @@ echo '<div class="comments-area">';
 			<?php
 		endif;
 
+		else : echo '<h4>There\'s no comment yet. Be the first to comment this post.</h4>';
 	endif; // Check for have_comments().
 	echo '</div><!-- .comments-area -->';
+	
 ?>
 	
 		<div class="comment-form">

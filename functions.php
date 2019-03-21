@@ -531,6 +531,28 @@ function yogaflex_posts_navigation( $args = array() ) {
 	 
 	add_filter( 'comment_form_fields', 'yogaflex_remove_comment_fields' );
 
+	// Save the comment meta data along with comment
+	
+	function save_comment_meta_data( $comment_id ) {
+	if ( ( isset( $_POST['comment_author'] ) ) && ( $_POST['comment_author'] != ’) )
+	$author = wp_filter_nohtml_kses($_POST['comment_author']);
+	add_comment_meta( $comment_id, 'comment_author', $author );
+
+	if ( ( isset( $_POST['comment_author_email'] ) ) && ( $_POST['comment_author_email'] != ’) )
+	$email = wp_filter_nohtml_kses($_POST['comment_author_email']);
+	add_comment_meta( $comment_id, 'comment_author_email', $email );
+
+	if ( ( isset( $_POST['subject'] ) ) && ( $_POST['subject'] != ’) )
+	$title = wp_filter_nohtml_kses($_POST['subject']);
+	add_comment_meta( $comment_id, 'subject', $title );
+
+	// if ( ( isset( $_POST['comment_field'] ) ) && ( $_POST['comment_field'] != ’) )
+	// $comment = wp_filter_nohtml_kses($_POST['comment_field']);
+	// add_comment_meta( $comment_id, 'comment_field', $comment );   
+	}
+
+	add_action( 'comment_post', 'save_comment_meta_data' );
+
   /**	======================== COMMENT FORM CUSTOMIZATION END ===================================== */
 
 // Include custom theme files
