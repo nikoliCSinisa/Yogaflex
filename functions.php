@@ -525,8 +525,8 @@ function yogaflex_posts_navigation( $args = array() ) {
 
   //Remove unnesessary fields from comment form
   function yogaflex_remove_comment_fields( $fields ) {
-	unset( $fields['comment_author'] );
-	unset( $fields['comment_author_email'] );
+	unset( $fields['author'] );
+	unset( $fields['email'] );
 	unset( $fields['url'] );
 	unset( $fields['comment'] );
 	return $fields;
@@ -539,26 +539,27 @@ function yogaflex_posts_navigation( $args = array() ) {
 		$commenter = wp_get_current_commenter();
 		$req = get_option( 'require_name_email' );
 		$html_req = ( $req ? " aria-required='true'" : '' );
+		$replace_author = __('Enter Name', 'yogaflex');
+		$replace_email = __('Enter email adress', 'yogaflex');
 
-			$fields['author']     			= 	'<div class="form-group form-inline"><div class="form-group col-lg-6 col-md-12 name">' .
-                                    			'<input type="text" class="form-control" id="name" placeholder="'. esc_attr__( 'Enter Name', 'text-domain' ) . 
-                                    			( $req ? '' : '' ) .'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter Name\'" 
-												value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" maxlength="50" tabindex="1"' . $html_req . ' /></div>';
+
+		$fields['author'] 				= '<div class="form-group form-inline"><div class="form-group col-lg-6 col-md-12 name">
+										   <input id="author" name="author" type="text" class="form-control"  placeholder="'.$replace_author.'" onfocus="this.placeholder = \'\'" 
+										   onblur="this.placeholder = \'Enter Name\'" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $html_req . ' /></div>';
+                    
+		$fields['email'] 				= '<div class="form-group col-lg-6 col-md-12 email"><input id="email" name="email" type="text" class="form-control"
+										   placeholder="'.$replace_email.'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
+										   value="' . esc_attr(  $commenter['comment_author_email'] ) .	'" size="30" maxlength="150"' . $html_req . ' /></div></div>';
+    
+        $fields['subject']    			= 	'<div class="form-group"><input type="text" class="form-control" id="subject" placeholder="'.
+                                    		esc_attr__( 'Subject', 'text-domain' ) . '"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
+											value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" tabindex="3" /></div>';
 												
-            $fields['email']      			= 	'<div class="form-group col-lg-6 col-md-12 email">' .
-                                    			'<input type="email" class="form-control" id="email" placeholder="'. esc_attr__( 'Enter email adress', 'text-domain' ) . 
-                                    			( $req ? '' : '' ) .'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
-												value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" maxlength="150" tabindex="2"' . $html_req . ' /></div></div>';
-												
-            $fields['subject']    			= 	'<div class="form-group"><input type="text" class="form-control" id="subject" placeholder="'.
-                                    			esc_attr__( 'Subject', 'text-domain' ) . '"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
-												value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" tabindex="3" /></div>';
-												
-            $fields['comment']        =	'<div class="form-group"><textarea class="form-control mb-10" rows="5" name="message" placeholder="'
-                                    			. _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
-												 onblur="this.placeholder = \'Message\'" cols="45" rows="8" tabindex="4" ></textarea></div>';
+        $fields['comment']        		=	'<div class="form-group"><textarea class="form-control mb-10" rows="5" name="message" placeholder="'
+                                    		. _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
+											 onblur="this.placeholder = \'Message\'" cols="45" rows="8" tabindex="4" ></textarea></div>';	
 												 
-			$fields['comment_notes_after']  =	'<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>';
+		$fields['comment_notes_after']  =	'<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>';	
 			
 		return $fields;
 	}
