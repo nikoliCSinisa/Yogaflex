@@ -551,41 +551,32 @@ function yogaflex_posts_navigation( $args = array() ) {
 										   placeholder="'.$replace_email.'" onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Enter email adress\'" 
 										   value="' . esc_attr(  $commenter['comment_author_email'] ) .	'" size="30" maxlength="150"' . $html_req . ' /></div></div>';
     
-        $fields['subject']    			= 	'<div class="form-group"><input type="text" class="form-control" id="subject" placeholder="'.
-                                    		esc_attr__( 'Subject', 'text-domain' ) . '"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
-											value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" tabindex="3" /></div>';
+        $fields['subject']    			= '<div class="form-group"><input type="text" class="form-control" id="subject" name="subject" placeholder="'.
+                                    	  esc_attr__( 'Subject', 'text-domain' ) . '"onfocus="this.placeholder = \'\'" onblur="this.placeholder = \'Subject\'" 
+										  value="' . esc_attr( $commenter['subject'] ) . '" size="30" maxlength="150" tabindex="3" /></div>';
 												
-        $fields['comment']        		=	'<div class="form-group"><textarea class="form-control mb-10" rows="5" name="message" placeholder="'
-                                    		. _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
-											 onblur="this.placeholder = \'Message\'" cols="45" rows="8" tabindex="4" ></textarea></div>';	
+        $fields['comment_field']    	= '<div class="form-group"><textarea class="form-control mb-10" rows="5" id="comment" name="comment" placeholder="'
+                                    	  . _x( 'Message', 'noun' ) . '" onfocus="this.placeholder = \'\'" 
+										  onblur="this.placeholder = \'Message\'" cols="45" rows="8" tabindex="4" ></textarea></div>';	
 												 
-		$fields['comment_notes_after']  =	'<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>';	
+		$fields['comment_notes_after']  = '<button type="submit" class="primary-btn">' . __('Post Comment') . '</button>';	
 			
 		return $fields;
 	}
 
 	add_filter('comment_form_fields', 'yogaflex_custom_comment_fields');
 
-	// Save the comment meta data along with comment
+	// Save the comment meta data along with comment - add subject into metadata
 	function yogaflex_save_comment_meta_data( $comment_id ) {
-	if ( ( isset( $_POST['comment_author'] ) ) && ( $_POST['comment_author'] != '') )
-	$author = wp_filter_nohtml_kses($_POST['comment_author']);
-	add_comment_meta( $comment_id, 'comment_author', $author );
-
-	if ( ( isset( $_POST['comment_author_email'] ) ) && ( $_POST['comment_author_email'] != '') )
-	$email = wp_filter_nohtml_kses($_POST['comment_author_email']);
-	add_comment_meta( $comment_id, 'comment_author_email', $email );
-
-	if ( ( isset( $_POST['subject'] ) ) && ( $_POST['subject'] != '') )
-	$title = wp_filter_nohtml_kses($_POST['subject']);
-	add_comment_meta( $comment_id, 'subject', $title );
-
-	 if ( ( isset( $_POST['comment_field'] ) ) && ( $_POST['comment_field'] != '') )
-	 $comment = wp_filter_nohtml_kses($_POST['comment_field']);
-	 add_comment_meta( $comment_id, 'comment_field', $comment );   
+		if ( ( isset( $_POST['subject'] ) ) && ( $_POST['subject'] != '') )
+		$title = wp_filter_nohtml_kses($_POST['subject']);
+		add_comment_meta( $comment_id, 'subject', $title );
 	}
 
 	add_action( 'comment_post', 'yogaflex_save_comment_meta_data' );
+
+	// Remove cancel reply link 
+	add_filter( 'cancel_comment_reply_link', '__return_false' );
 
   /**	======================== COMMENT FORM CUSTOMIZATION END ===================================== */
 
