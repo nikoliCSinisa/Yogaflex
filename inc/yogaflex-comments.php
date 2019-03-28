@@ -58,9 +58,9 @@ function yogaflex_comments( $comment, $args, $depth ) {
                     <?php if ( '0' == $comment->comment_approved ) : ?>
                         <p class="comment-awaiting-moderation"><?php esc_html_e( 'Your comment is awaiting moderation.', 'yogaflex' ); ?></p>
                     <?php endif; ?>
-				<p class="comment">
-					<?php comment_text(); ?>
-                </p><!-- .comment -->
+				
+                    <?php comment_text(); ?>
+
             </div><!-- .desc -->
 
         </div><!-- .user -->

@@ -162,33 +162,6 @@ function yogaflex_scripts() {
 add_action( 'wp_enqueue_scripts', 'yogaflex_scripts' );
 
 /**
- * Implement the Custom Header feature.
- */
-require get_template_directory() . '/inc/custom-header.php';
-
-/**
- * Custom template tags for this theme.
- */
-require get_template_directory() . '/inc/template-tags.php';
-
-/**
- * Functions which enhance the theme by hooking into WordPress.
- */
-require get_template_directory() . '/inc/template-functions.php';
-
-/**
- * Customizer additions.
- */
-require get_template_directory() . '/inc/customizer.php';
-
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
-
-/**
  * 		==============================================================================
  * 									COUNTING POST VIEWS
  * 		==============================================================================
@@ -434,89 +407,6 @@ function yogaflex_posts_navigation( $args = array() ) {
 
  /**	============================= SINGLE POST NAVIGATION END =================================== */
 
- /** 
-  * =================================================================================================
-  *								COMMENT LIST CUSTOMIZATION
-  * =================================================================================================
-  */
-
-  function yogaflex_comment($comment, $args, $depth) {
-    if ( 'div' === $args['style'] ) {
-        $tag       = 'div';
-        $add_below = 'comment';
-    } else {
-        $tag       = 'li';
-        $add_below = 'div-comment';
-    }
-	
-	 echo '<' . $tag . comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) . 'id="comment-' . comment_ID() . '">';
-	
-    	if ( 'div' != $args['style'] ) { 
-	?>
-		<div id="div-comment-<?php comment_ID() ?>" class="user justify-content-between d-flex">
-		
-	<?php
-	} 
-	?>
-			<div class="thumb"> <!-- avatar -->
-				<?php 
-					if ( $args['avatar_size'] != 0 ) {
-						echo get_avatar( $comment, $args['avatar_size'] ); 
-					} 
-				?>
-			</div>
-
-			<div class="desc">
-			<?php printf( __( '<h5>%s</h5>' ), get_comment_author_link() ); ?>
-			</div>
-			
-			<?php 
-				if ( $comment->comment_approved == '0' ) { ?>
-					<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em><br/><?php 
-				} 
-			?>
-
-				<p class="date">
-					<a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>"><?php
-						/* translators: 1: date, 2: time */
-						printf( 
-							__('%1$s at %2$s'), 
-							get_comment_date(),  
-							get_comment_time() 
-						); ?>
-					</a><?php 
-					//edit_comment_link( __( '(Edit)' ), '  ', '' ); ?>
-				</p>
-				
-				<p class="comment"> <?php comment_text(); ?> </p>
-		</div> <!-- .user -->
-
-        <div class="reply-btn">
-			<?php 
-                comment_reply_link( 
-                    array_merge( 
-                        $args, 
-                        array( 
-                            'add_below' => $add_below, 
-                            'depth'     => $depth, 
-                            'max_depth' => $args['max_depth'] 
-                        ) 
-                    ) 
-				); 
-			?>
-		</div>
-		
-		<?php 
-			if ( 'div' != $args['style'] ) : 
-		?>
-	</div>
-	
-	<?php 
-    	endif;
-  }
-
-  /**	======================== COMMENT LIST CUSTOMIZATION END ===================================== */
-
   /** 
   * =================================================================================================
   *								COMMENT FORM CUSTOMIZATION
@@ -579,6 +469,39 @@ function yogaflex_posts_navigation( $args = array() ) {
 	add_filter( 'cancel_comment_reply_link', '__return_false' );
 
   /**	======================== COMMENT FORM CUSTOMIZATION END ===================================== */
+
+/**
+ *  ==================================================================================================
+ * 											FILES INCLUDE
+ *  ==================================================================================================
+ */
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_template_directory() . '/inc/custom-header.php';
+
+/**
+ * Custom template tags for this theme.
+ */
+require get_template_directory() . '/inc/template-tags.php';
+
+/**
+ * Functions which enhance the theme by hooking into WordPress.
+ */
+require get_template_directory() . '/inc/template-functions.php';
+
+/**
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Load Jetpack compatibility file.
+ */
+if ( defined( 'JETPACK__VERSION' ) ) {
+	require get_template_directory() . '/inc/jetpack.php';
+}
 
 // Include custom theme files
 require get_template_directory() . '/inc/widgets.php';
