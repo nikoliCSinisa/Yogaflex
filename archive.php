@@ -48,17 +48,34 @@ get_header();
 					/* Start the Loop */
 						while ( have_posts() ) :
 							the_post();
+					?>
+							<div class="single-post row">	
+								<div class="col-lg-3  col-md-3 meta-details">
+									<?php
+										if(get_the_tag_list()) {
+											echo get_the_tag_list('<ul class="tags"><li>','</li>'.', '.'<li>','</li></ul>');
+										}
+									?>
+										<div class="user-details row">
+											<?php if ( 'post' === get_post_type() ) : ?>	
+												<p class="user-name col-lg-12 col-md-12 col-6"><a href="#"><?php yogaflex_posted_by(); ?></a><span class="lnr lnr-user"></span></p>
+												<p class="date col-lg-12 col-md-12 col-6"><a href="#"><?php yogaflex_posted_on(); ?></a> <span class="lnr lnr-calendar-full"></span></p>
+												<p class="view col-lg-12 col-md-12 col-6"><a href="#"><?php echo getPostViews(get_the_ID()); ?></a> <span class="lnr lnr-eye"></span></p>
+												<p class="comments col-lg-12 col-md-12 col-6"><a href="#"><?php comments_number(); ?></a> <span class="lnr lnr-bubble"></span></p>
+								<?php   endif;	 ?>
+										</div><!-- .user-details -->
+								
+								</div>
+								
+					<?php
 
-							/*
-							* Include the Post-Type-specific template for the content.
-							* If you want to override this in a child theme, then include a file
-							* called content-___.php (where ___ is the Post Type name) and that will be used instead.
-							*/
+
 							get_template_part( 'template-parts/content', get_post_type() );
 
 						endwhile;
 
-						the_posts_navigation();
+						/** Add numeric pagination */
+					yogaflex_numeric_posts_nav();
 
 						else :
 
