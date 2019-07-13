@@ -34,7 +34,7 @@ class Yogaflex_Search_Widget extends WP_Widget {
         echo $args['before_widget'];
 ?>
         <form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	        <input type="text" placeholder="<?php echo esc_attr_x( 'Search Posts', 'placeholder', 'yogaflex' ); ?>" value="<?php echo get_search_query(); ?>" name="search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+	        <input type="text" placeholder="<?php echo esc_attr_x( 'Search Posts', 'placeholder', 'yogaflex' ); ?>" value="<?php echo get_search_query(); ?>" name="s" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
 	        <button type="submit"><i class="fa fa-search"></i></button>
         </form>
 <?php

@@ -11,7 +11,9 @@
 <P>Ovo je searchform.php</P>
 <?php $unique_id = esc_attr( wp_unique_id( 'search-form' ) ); ?>
 
-<form method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-	<input type="text" placeholder="<?php echo esc_attr_x( 'Search Posts', 'placeholder', 'yogaflex' ); ?>" value="<?php echo get_search_query(); ?>" name="search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
-	<button type="submit"><i class="fa fa-search"></i></button>
-</form>
+<div class="single-sidebar-widget search-widget">
+	<form role="search" method="get" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<input type="text" placeholder="<?php echo esc_attr_x( 'Search Posts', 'placeholder', 'yogaflex' ); ?>" value="<?php echo get_search_query(); ?>" name="s" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
+				<button type="submit"><i class="fa fa-search"></i></button>
+	</form>
+</div>

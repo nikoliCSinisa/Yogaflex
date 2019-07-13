@@ -8,28 +8,23 @@
  */
 
 ?>
+<div class="col-lg-9 col-md-9 ">
+	 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		<div class="feature-img">
+			<?php yogaflex_post_thumbnail(); ?>
+		</div>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			yogaflex_posted_on();
-			yogaflex_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
+		<header class="entry-header">
+			<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+		</header><!-- .entry-header -->
 
-	<?php yogaflex_post_thumbnail(); ?>
+		<div class="entry-summary">
+			<?php the_excerpt(); ?>
+		</div><!-- .entry-summary -->
 
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
 
-	<footer class="entry-footer">
-		<?php yogaflex_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+
+	 </article><!-- #post-<?php the_ID(); ?> -->
+</div>	<!-- .col-lg-9 -->
+</div>	<!-- single post end -->
