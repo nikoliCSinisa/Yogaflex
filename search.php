@@ -45,11 +45,11 @@ get_header();
 
 				<div class="col-lg-8 posts-list">
 
-					<?php
+						<?php
 							/* Start the Loop */
 							while ( have_posts() ) :
 								the_post();
-					?>
+						?>
 					<div class="single-post row">	
 						<div class="col-lg-3  col-md-3 meta-details">
 							<?php

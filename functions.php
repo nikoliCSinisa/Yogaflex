@@ -470,6 +470,40 @@ function yogaflex_posts_navigation( $args = array() ) {
 
   /**	======================== COMMENT FORM CUSTOMIZATION END ===================================== */
 
+
+/**
+ * 	=================================================================================================	
+ * 											BREADCRUMBS 
+ * 	=================================================================================================
+ */  
+
+	function the_breadcrumb() {
+		if (!is_home()) {
+			echo '<p class="link-nav">';
+			echo '<a href="';
+			echo get_option('home');
+			echo '">';
+			bloginfo('name');
+			echo '</a> <span class="lnr lnr-arrow-right"></span> ';
+				if (is_category() || is_archive()){
+					the_archive_title( '<cite>', '</cite>' );
+				}
+				elseif(is_single() || is_page()){
+					echo '<a href="';
+					echo get_post_type_archive_link('post');
+					echo '">Blog</a>';
+					echo ' <span class="lnr lnr-arrow-right"></span> ';
+					echo '<cite>';
+					the_title();
+					echo '</cite>';
+				}
+			echo '</p>';
+		}
+	}
+
+ /**	================================  BREADCRUMBS END  ========================================== */
+
+
 /**
  *  ==================================================================================================
  * 											FILES INCLUDE

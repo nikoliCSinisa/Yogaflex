@@ -16,19 +16,14 @@ get_header();
 		<div class="container">
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
+					<?php if ( function_exists('the_breadcrumb') && function_exists('the_title') ) {	?>
 					<h1>
-						Blog Details
+					<?php	the_title(); ?>
 					</h1>
-					<p class="link-nav"><a href="index.html">Home </a>
-						<span class="lnr lnr-arrow-right"></span>
-						<a href="blog-home.html">
-							Blog
-						</a>
-						<span class="lnr lnr-arrow-right"></span>
-						<a href="blog-single.html">
-							Blog Details
-						</a>
-					</p>
+					<?php 
+								the_breadcrumb();
+						}
+					?>
 				</div>
 			</div>
 		</div>

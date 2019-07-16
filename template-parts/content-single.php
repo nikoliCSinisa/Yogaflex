@@ -34,9 +34,9 @@
 				</div>
 
 		<div class="col-lg-9 col-md-9">
-			<h3 class="mt-20 mb-20">
-					<?php	the_title(); ?>
-			</h3>
+			<h5 class="mt-20 mb-20">
+
+			</h5>
 			
 					<?php	the_content();	
 			

@@ -2406,7 +2406,8 @@ body.mobile-nav-active #mobile-nav-toggle {
         font-size: 35px; } }
   .about-content p {
     font-weight: 400; }
-  .about-content a {
+  .about-content a, cite{
+    font-style: normal;
     color: #777777;
     font-weight: 300;
     font-size: 14px;

@@ -22,16 +22,11 @@ get_header();
 										the_archive_description( '<div>', '</div>' );
 									?>
 								</header>
-							<p class="link-nav"><a href="index.html">Home </a>
-								<span class="lnr lnr-arrow-right"></span>
-								<a href="blog-home.html">
-									Blog
-								</a>
-								<span class="lnr lnr-arrow-right"></span>
-								<a href="blog-single.html">
-									Blog Details
-								</a>
-							</p>
+								<?php 
+									if ( function_exists('the_breadcrumb')){
+									the_breadcrumb();
+									}
+								?>
 						</div>
 					</div>
 				</div>
