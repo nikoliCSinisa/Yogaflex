@@ -16,7 +16,8 @@ function yogaflex_add_admin_page(){
 
     //Generate menu sub-menu pages
     add_submenu_page('yogaflex_theme', 'About Author Options', 'Author', 'manage_options', 'yogaflex_theme', 'yogaflex_theme_create_page' );
-    add_submenu_page('yogaflex_theme' , 'Yogaflex CSS Options', 'Custom CSS', 'manage_options', 'yogaflex_theme_css', 'yogaflex_theme_settings_page' );
+    add_submenu_page('yogaflex_theme' , 'Yogaflex Contact Form', 'Contact Form', 'manage_options', 'yogaflex_theme_contact_form', 'yogaflex_contact_form_page' );
+    //add_submenu_page('yogaflex_theme' , 'Yogaflex CSS Options', 'Custom CSS', 'manage_options', 'yogaflex_theme_css', 'yogaflex_theme_settings_page' );
 
     // Activate custom settings
     add_action( "admin_init", 'yogaflex_custom_settings');
@@ -25,6 +26,7 @@ function yogaflex_add_admin_page(){
 add_action('admin_menu', 'yogaflex_add_admin_page' );
 
 function yogaflex_custom_settings(){
+    //Sidebar Author Options
     register_setting( 'yogaflex-settings-group', 'profile_picture' );
     register_setting( 'yogaflex-settings-group', 'first_name' );
     register_setting( 'yogaflex-settings-group', 'last_name' );
@@ -45,7 +47,18 @@ function yogaflex_custom_settings(){
     add_settings_field( 'sidebar-twitter', 'Twitter handler', 'yogaflex_sidebar_twitter', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-git', 'Git handler', 'yogaflex_sidebar_git', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-behance', 'Behance handler', 'yogaflex_sidebar_behance', 'yogaflex_theme', 'yogaflex-sidebar-options' );
+
+
+    // Contact Form Options
+    register_setting( 'yogaflex-contact-options', 'activate_contact' );
+
+    add_settings_section( 'yogaflex-contact-section', 'Contact Form', 'yogaflex_contact_section', 'yogaflex_theme_contact_form' );
+
+    add_settings_field( 'activate-form', 'Activate Contact Form', 'yogaflex_activate_contact', 'yogaflex_theme_contact_form', 'yogaflex-contact-section' );
+
 }
+
+// Author sidebar form functions
 
 function yogaflex_sidebar_options(){
     echo 'Customize sidebar Widget for Author details';
@@ -103,11 +116,23 @@ function yogaflex_sanitize_twitter_handler( $input ){
     return $output;
 }
 
-
 function yogaflex_theme_create_page(){
     require_once(get_template_directory().'/inc/templates/yogaflex-admin.php');
 }
 
-function yogaflex_theme_settings_page(){
-    // generation of our admin page
+// Contact Form functions
+
+function yogaflex_contact_section(){
+    echo 'Activate and Deactivate the built-in Contact Form';
 }
+
+function yogaflex_activate_contact(){
+    $options = get_option('activate_contact');
+    $checked = ( $options == 1 ? 'checked' : '');
+    echo '<label><input type="checkbox" id="activate_contact"  name="activate_contact" value="1" '.$checked.' /></label>';
+}
+
+function yogaflex_contact_form_page(){
+    require_once(get_template_directory().'/inc/templates/yogaflex-contact-form.php');
+}
+

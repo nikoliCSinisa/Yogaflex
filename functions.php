@@ -537,12 +537,14 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-// Include custom theme files
+// Include custom widget file
 require get_template_directory() . '/inc/widgets.php';
 
-// Include custom admin function file
+// Include custom admin function files
 require get_template_directory() . '/inc/function-admin.php';
 require get_template_directory() . '/inc/enqueue.php';
+require get_template_directory() . '/inc/custom-post-type.php';
+
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/classes/class-wp-bootstrap-navwalker.php';

@@ -8,7 +8,6 @@
  */
 
 ?>
-<P>Ovo je searchform.php</P>
 <?php $unique_id = esc_attr( wp_unique_id( 'search-form' ) ); ?>
 
 <div class="single-sidebar-widget search-widget">
