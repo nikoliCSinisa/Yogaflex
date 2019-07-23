@@ -10,7 +10,10 @@
 
  $contact = get_option( 'activate_contact');
     if( @$contact == 1){
-       add_action( 'init', 'yogaflex_custom_contact_post_type' );
+        add_action( 'init', 'yogaflex_custom_contact_post_type' );
+        
+        add_filter( 'manage_yogaflex-contact_posts_columns', 'yogaflex_set_contact_columns' );
+        add_action( 'manage_yogaflex-contact_posts_custom_column', 'yogaflex_contact_custom_column', 10, 2 );
     }
 
 
@@ -20,7 +23,7 @@ function yogaflex_custom_contact_post_type(){
         'name'                  => 'Messages',
         'singular_name'         => 'Message',
         'manu_name'             => 'Messages',
-        'name_admin_bar'        => 'Massage'
+        'name_admin_bar'        => 'Message'
     );
 
     $args = array(
@@ -35,4 +38,36 @@ function yogaflex_custom_contact_post_type(){
     );
 
     register_post_type( 'yogaflex-contact', $args );
+}
+
+function yogaflex_set_contact_columns( $columns){
+    $newColumns = array();
+    $newColumns['title'] = 'Subject';
+    $newColumns['message'] = 'Message';
+    $newColumns['author'] = 'Full name';
+    $newColumns['email'] = 'Email';
+    $newColumns['date'] = 'Date';
+    return $newColumns;
+}
+
+function yogaflex_contact_custom_column( $column, $post_id){
+
+    switch( $column){
+
+        case 'title' :
+            echo 'Name';
+            break;
+
+        case 'subject' :
+            echo 'Subject';
+            break;
+
+        case 'message' :
+            echo get_the_excerpt();
+            break;
+
+        case 'email' :
+            echo 'email adress';
+            break;
+    }
 }
