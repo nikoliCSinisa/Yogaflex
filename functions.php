@@ -478,23 +478,31 @@ function yogaflex_posts_navigation( $args = array() ) {
  */  
 
 	function the_breadcrumb() {
-		if (!is_home()) {
+		if ( ! is_home() ) {
 			echo '<p class="link-nav">';
 			echo '<a href="';
 			echo get_option('home');
 			echo '">';
-			bloginfo('name');
+			//Option 1: Your site name -> Page 1 -> Page 2 ->	Uncomment for this option
+				//bloginfo('name');
+			//Option 2: Home -> Page 1 -> Page 2 ->		Comment this option if You use Option 1
+				echo 'Home';
 			echo '</a> <span class="lnr lnr-arrow-right"></span> ';
-				if (is_category() || is_archive()){
+				if ( is_category() || is_archive() ){
 					the_archive_title( '<cite>', '</cite>' );
 				}
-				elseif(is_single() || is_page()){
+				elseif( is_single() ){
 					echo '<a href="';
 					echo get_post_type_archive_link('post');
 					echo '">Blog</a>';
 					echo ' <span class="lnr lnr-arrow-right"></span> ';
 					echo '<cite>';
-					the_title();
+						the_title();
+					echo '</cite>';
+				}
+				elseif( is_page() ){
+					echo '<cite>';
+						the_title();
 					echo '</cite>';
 				}
 			echo '</p>';

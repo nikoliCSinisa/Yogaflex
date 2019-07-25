@@ -18,7 +18,7 @@ get_header();
 				<div class="about-content col-lg-12">
 					<?php if ( function_exists('the_breadcrumb') && function_exists('the_title') ) {	?>
 					<h1>
-					<?php	the_title(); ?>
+						<?php	the_title(); ?>
 					</h1>
 					<?php 
 								the_breadcrumb();
