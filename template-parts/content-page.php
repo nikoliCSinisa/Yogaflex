@@ -10,70 +10,43 @@
 ?>
 
 <!-- <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>> -->
-	<!--<header class="entry-header">
-		
-	</header> .entry-header -->
 	
-	<div class="single-post row">
-		<div class="col-lg-3  col-md-3 meta-details">
-<!--
-		<ul class="tags">
-		<?php						/** 
-			$tags = get_tags();
-				if ( $tags ) :
-					foreach ( $tags as $tag ) : 			
-		?>
-						<li>
-							<a href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" title="<?php echo esc_attr( $tag->name ); ?>"><?php echo esc_html( $tag->name ); ?></a>
-						</li>
-				<?php endforeach; ?>
-			<?php endif;		*/		?>
-		</ul>
-					-->		
+	
+	<section class="contact-page-area section-gap">
+		<div class="container">	
+								<?php
+									if(is_page('contact')){
+								?>
+									<div class="row">
+										<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+											<div class="col-lg-4 d-flex flex-column address-wrap">
+												<div class="single-contact-address d-flex flex-row">
+													<div class="icon">
+														<span class="lnr lnr-home"></span>
+													</div>
 
-		<div class="col-lg-9 col-md-9 ">
-			<div class="feature-img">
-				<img class="img-fluid" src="<?php yogaflex_post_thumbnail(); ?>" alt="">
-			</div>
+													<div class="contact-details">
+													</div>
+												</div>
+											</div>
+										</div>
 
-		<a class="posts-title" href="blog-single.html"><?php  the_title( '<h3>', '</h3>' ); ?></a>
 
-	<!-- <div class="entry-content"> -->
-		<p class="excert">
-		<?php
-			the_content();
-		?>
-		</p>
-		<?php wp_link_pages( array(
-			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'yogaflex' ),
-			'after'  => '</div>',
-		) );	
-		?>
-	</div><!-- .col-lg-9 -->
+									</div>
+								<?php
+									}
+									elseif(is_page('about')){
+											the_content();
+									}
+									elseif(is_page('trainers')){
+										the_content();
+									}
 
-	<?php // if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php /**
-			edit_post_link(
-				sprintf(
-					wp_kses(
-						// translators: %s: Name of current post. Only visible to screen readers 
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'yogaflex' ),
-						array(
-							'span' => array(
-								'class' => array(),
-							),
-						)
-					),
-					get_the_title()
-				),
-				'<span class="edit-link">',
-				'</span>'
-			);			*/
-			?>
-		</footer><!-- .entry-footer -->
-			<?php //endif; ?>
 
-		 </div><!-- .meta-details -->
-	</div>
-<!-- </article>#post-<?php the_ID(); ?> -->
+									
+								?>
+
+		</div>
+	</section>
+	<!-- End contact-page Area	#post-<?php the_ID(); ?>	-->
+

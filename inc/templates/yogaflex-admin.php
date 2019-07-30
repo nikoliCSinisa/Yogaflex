@@ -1,6 +1,9 @@
-<h1>About Author Options</h1>
+<h1>Yogaflex Author Widget Options</h1>
 
 <?php  settings_errors(); ?>
+
+<div class="divider" style="width:60%; height:1px; margin: 40px 0 19px 0; overflow: hidden; background-color: #e5e5e5;"></div>
+
 <?php 
 
 $picture = esc_attr( get_option( 'profile_picture' ));
