@@ -67,20 +67,21 @@ function yogaflex_custom_settings(){
     register_setting( 'yogaflex-details-group', 'street' );
     register_setting( 'yogaflex-details-group', 'housenumber' );
     register_setting( 'yogaflex-details-group', 'zipcode' );
+    register_setting( 'yogaflex-details-group', 'local_part' );
+    register_setting( 'yogaflex-details-group', 'domain' );
 
     add_settings_section( 'yogaflex-contact-detail-section', 'Phone Numbers', 'yogaflex_contact_detail_section', 'yogaflex_theme_contact_details' );
-    add_settings_section( 'yogaflex-adress-detail-section', 'Adress Details', 'yogaflex_adress_detail_section', 'yogaflex_theme_contact_details' );
-
+    add_settings_section( 'yogaflex-address-detail-section', 'Address Details', 'yogaflex_address_detail_section', 'yogaflex_theme_contact_details' );
 
     add_settings_field( 'details-header-phone', 'Header Telephone Number', 'yogaflex_header_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
     add_settings_field( 'details-footer-phone', 'Footer Telephone Numbers', 'yogaflex_footer_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
     add_settings_field( 'details-contact-page-phone', 'Contact Page Telephone Number', 'yogaflex_contact_page_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
-    add_settings_field( 'details-state', 'State', 'yogaflex_state', 'yogaflex_theme_contact_details', 'yogaflex-adress-detail-section' );
-    add_settings_field( 'details-city', 'City', 'yogaflex_city', 'yogaflex_theme_contact_details', 'yogaflex-adress-detail-section' );
-    add_settings_field( 'details-street', 'Street', 'yogaflex_street', 'yogaflex_theme_contact_details', 'yogaflex-adress-detail-section' );
-    add_settings_field( 'details-number', 'House Number', 'yogaflex_number', 'yogaflex_theme_contact_details', 'yogaflex-adress-detail-section' );
-    add_settings_field( 'details-zip-code', 'Zip Code', 'yogaflex_zip_code', 'yogaflex_theme_contact_details', 'yogaflex-adress-detail-section' );
-
+    add_settings_field( 'details-state', 'State', 'yogaflex_state', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-city', 'City', 'yogaflex_city', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-street', 'Street', 'yogaflex_street', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-number', 'House Number', 'yogaflex_number', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-zip-code', 'Zip Code', 'yogaflex_zip_code', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-email', 'e-mail address', 'yogaflex_email', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
 
 }
 
@@ -175,26 +176,26 @@ function yogaflex_contact_detail_section(){
 
 function yogaflex_header_phone(){
     $phone1 = esc_attr( get_option( 'telephone1' ));
-    echo '<p>Input Your Telephone number for header section.</p>
+    echo '<p>Input Your telephone number for header section.</p>
     <input type="text" name="phone1" value="'.$phone1.'" placeholder="Header phone number">';
 }
 
 function yogaflex_footer_phone(){
     $phone2= esc_attr( get_option( 'telephone2' ));
     $phone3 = esc_attr( get_option( 'telephone3' ));
-    echo '<p>Input Your Telephone numbers for footer section.</p>
-    <input type="text" name="phone2" id="phone2" value="'.$phone2.'" placeholder="First footer phone number">
-    <input type="text" name="phone3" id="phone3" value="'.$phone3.'" placeholder="Second footer phone number">';
+    echo '<p>Input Your telephone numbers for footer section.</p>
+    <input type="text" name="phone2" id="phone2" value="'.$phone2.'" placeholder="First phone number">
+    <input type="text" name="phone3" id="phone3" value="'.$phone3.'" placeholder="Second phone number">';
 }
 
 function yogaflex_contact_page_phone(){
     $phone4 = esc_attr( get_option( 'telephone4' ));
-    echo '<p>Input Your Telephone number for contact page.</p>
-    <input type="text" name="phone4" value="'.$phone4.'" placeholder="Contact page phone number"><br/>';
+    echo '<p>Input Your main telephone number for contact page.</p>
+    <input type="text" name="phone4" value="'.$phone4.'" placeholder="Main phone number"><br/>';
 }
 
-function yogaflex_adress_detail_section(){
-    echo 'Insert adress details for contact page.';
+function yogaflex_address_detail_section(){
+    echo 'Insert address details for contact page.';
 }
 
 function yogaflex_state(){
@@ -225,6 +226,14 @@ function yogaflex_zip_code(){
     $zip_code = esc_attr( get_option( 'zip_code' ));
     echo '<p>Input Your Zip Code.</p>
     <input type="text" name="zipcode" value="'.$zip_code.'" placeholder="Zip Code">';
+}
+
+function yogaflex_email(){
+    $local_part = esc_attr( get_option( 'local_part' ));
+    $domain = esc_attr( get_option( 'domain' ));
+    echo '<p>Input Your e-mail address.</p>
+    <input type="text" name="local_part" value="'.$local_part.'" placeholder="Local Part"><spanp>@</span>
+    <input type="text" name="domain" value="'.$domain.'" placeholder="Domain">';
 }
 
         // include contact details page file
