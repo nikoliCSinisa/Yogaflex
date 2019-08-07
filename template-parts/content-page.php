@@ -16,23 +16,51 @@
 		<div class="container">	
 								<?php
 									if(is_page('contact')){
+										$phone4 = esc_attr( get_option( 'telephone4' ));
+										$state = esc_attr( get_option( 'state' ));
+										$city = esc_attr( get_option( 'city' ));
+										$street = esc_attr( get_option( 'street' ));
+										$housenumber = esc_attr( get_option( 'housenumber' ));
+										$localpart = esc_attr( get_option( 'localpart' ));
+										$domain = esc_attr( get_option( 'domain' ));
+										$hoursfrom = esc_attr( get_option( 'hoursfrom' ));
+    									$hourstill = esc_attr( get_option( 'hourstill' ));
 								?>
 									<div class="row">
 										<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
-											<div class="col-lg-4 d-flex flex-column address-wrap">
-												<div class="single-contact-address d-flex flex-row">
-													<div class="icon">
-														<span class="lnr lnr-home"></span>
-													</div>
-
-													<div class="contact-details">
-													</div>
+										<div class="col-lg-4 d-flex flex-column address-wrap">
+											<div class="single-contact-address d-flex flex-row">
+												<div class="icon">
+													<span class="lnr lnr-home"></span>
+												</div>
+												<div class="contact-details">
+													<h5><?php echo $city.', '.$state; ?></h5>
+													<p>
+														<?php echo $housenumber.' '.$street; ?>
+													</p>
+												</div>
+											</div>
+											<div class="single-contact-address d-flex flex-row">
+												<div class="icon">
+													<span class="lnr lnr-phone-handset"></span>
+												</div>
+												<div class="contact-details">
+													<h5><?php echo $phone4; ?></h5>
+													<p><?php echo 'Mon to Fri  '.$hoursfrom.' to '.$hourstill; ?></p>
+												</div>
+											</div>
+											<div class="single-contact-address d-flex flex-row">
+												<div class="icon">
+													<span class="lnr lnr-envelope"></span>
+												</div>
+												<div class="contact-details">
+													<h5><?php echo $localpart.'@'.$domain; ?></h5>
+													<p>Send us your query anytime!</p>
 												</div>
 											</div>
 										</div>
-
-
-									</div>
+										<!-- place for Contact Form -->
+									</div>	
 								<?php
 									}
 									elseif(is_page('about')){

@@ -36,8 +36,11 @@
 							</ul>
 						</div><!-- .header-top-left -->
 						<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
-							<a href="tel:+880 1234 654 953">
-								<span class="text">+880 1234 654 953</span>
+							<?php 
+								$phone1 = esc_attr( get_option( 'telephone1' ));
+							?>
+							<a href="tel:<?php echo $phone1; ?>">
+								<span class="text"><?php echo $phone1; ?></span>
 							</a>
 							<a class="book-now" href="#">Book Now</a>
 						</div><!-- .header-top-right -->

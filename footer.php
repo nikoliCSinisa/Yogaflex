@@ -10,6 +10,17 @@
  */
 
 ?>
+
+<?php 
+	$phone2 = esc_attr( get_option( 'telephone2' ));
+	$phone3 = esc_attr( get_option( 'telephone3' ));
+	$state = esc_attr( get_option( 'state' ));
+	$city = esc_attr( get_option( 'city' ));
+	$street = esc_attr( get_option( 'street' ));
+	$housenumber = esc_attr( get_option( 'housenumber' ));
+	$zipcode = esc_attr( get_option( 'zipcode' ));
+
+?>
 	<!-- start footer Area -->
 	<footer class="footer-area section-gap">
 		<div class="container">
@@ -27,10 +38,10 @@
 					<div class="single-footer-widget">
 						<h4>Contact Us</h4>
 						<p>
-							56/8, rockybeach road, santa monica, Los angeles, California - 59620.
+							<?php echo $housenumber.', '.$street.', '.$city.', '.$state.' - '.$zipcode.'.'; ?>
 						</p>
 						<p class="number">
-							012-6532-568-9746 <br> 012-6532-569-9748
+							<?php echo $phone2; ?> <br> <?php echo $phone3; ?>
 						</p>
 					</div>
 				</div>
@@ -78,12 +89,20 @@
 				</p>
 
 				<!-- social icons -->
-				<div class="col-lg-6 col-sm-12 footer-social">
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-dribbble"></i></a>
-					<a href="#"><i class="fa fa-behance"></i></a>
-				</div>
+				<?php 
+					$yogaflex_facebook = esc_attr( get_option( 'facebook_details' ));
+					$yogaflex_twitter = esc_attr( get_option( 'twitter_details' ));
+					$yogaflex_instagram = esc_attr( get_option( 'instagram_details' ));
+					$yogaflex_youtube = esc_attr( get_option( 'youtube_details' ));
+				
+					echo '<div class="col-lg-6 col-sm-12 footer-social">';
+					
+						echo '<a href="https://facebook.com/'.$yogaflex_facebook.'"><i class="fa fa-facebook"></i></a>';
+						echo '<a href="https://twitter.com/'.$yogaflex_twitter.'"><i class="fa fa-twitter"></i></a>';
+						echo '<a href="https://instagram.com/'.$yogaflex_instagram.'"><i class="fa fa-instagram"></i></a>';
+						echo '<a href="https://youtube.com/'.$yogaflex_youtube.'"><i class="fa fa-youtube"></i></a>';
+				?>
+					</div>
 				<!-- social icons end -->
 
 			</div><!-- .footer-bottom -->

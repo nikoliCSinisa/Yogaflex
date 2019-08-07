@@ -62,27 +62,38 @@ function yogaflex_custom_settings(){
     register_setting( 'yogaflex-details-group', 'telephone2' );
     register_setting( 'yogaflex-details-group', 'telephone3' );
     register_setting( 'yogaflex-details-group', 'telephone4' );
+    register_setting( 'yogaflex-details-group', 'hoursfrom' );
+    register_setting( 'yogaflex-details-group', 'hourstill' );
     register_setting( 'yogaflex-details-group', 'state' );
     register_setting( 'yogaflex-details-group', 'city' );
     register_setting( 'yogaflex-details-group', 'street' );
     register_setting( 'yogaflex-details-group', 'housenumber' );
     register_setting( 'yogaflex-details-group', 'zipcode' );
-    register_setting( 'yogaflex-details-group', 'local_part' );
+    register_setting( 'yogaflex-details-group', 'localpart' );
     register_setting( 'yogaflex-details-group', 'domain' );
+    register_setting( 'yogaflex-details-group', 'facebook_details' );
+    register_setting( 'yogaflex-details-group', 'twitter_details', 'yogaflex_sanitize_twitter_handler' );
+    register_setting( 'yogaflex-details-group', 'instagram_details' );
+    register_setting( 'yogaflex-details-group', 'youtube_details' );
 
     add_settings_section( 'yogaflex-contact-detail-section', 'Phone Numbers', 'yogaflex_contact_detail_section', 'yogaflex_theme_contact_details' );
     add_settings_section( 'yogaflex-address-detail-section', 'Address Details', 'yogaflex_address_detail_section', 'yogaflex_theme_contact_details' );
+    add_settings_section( 'yogaflex-social-detail-section', 'Social Networks Details', 'yogaflex_social_detail_section', 'yogaflex_theme_contact_details' );
 
     add_settings_field( 'details-header-phone', 'Header Telephone Number', 'yogaflex_header_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
     add_settings_field( 'details-footer-phone', 'Footer Telephone Numbers', 'yogaflex_footer_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
     add_settings_field( 'details-contact-page-phone', 'Contact Page Telephone Number', 'yogaflex_contact_page_phone', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
+    add_settings_field( 'details-contact-hours', 'Contact hours', 'yogaflex_contact_hours', 'yogaflex_theme_contact_details', 'yogaflex-contact-detail-section' );
     add_settings_field( 'details-state', 'State', 'yogaflex_state', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
     add_settings_field( 'details-city', 'City', 'yogaflex_city', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
     add_settings_field( 'details-street', 'Street', 'yogaflex_street', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
-    add_settings_field( 'details-number', 'House Number', 'yogaflex_number', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
+    add_settings_field( 'details-housenumber', 'House Number', 'yogaflex_housenumber', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
     add_settings_field( 'details-zip-code', 'Zip Code', 'yogaflex_zip_code', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
     add_settings_field( 'details-email', 'e-mail address', 'yogaflex_email', 'yogaflex_theme_contact_details', 'yogaflex-address-detail-section' );
-
+    add_settings_field( 'details-social-facebook', 'Facebook handler', 'yogaflex_details_facebook', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
+    add_settings_field( 'details-social-twitter', 'Twitter handler', 'yogaflex_details_twitter', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
+    add_settings_field( 'details-social-instagram', 'Instagram handler', 'yogaflex_details_instagram', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
+    add_settings_field( 'details-social-youtube', 'YouTube handler', 'yogaflex_details_youtube', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
 }
 
 // Author sidebar form functions
@@ -170,6 +181,8 @@ function yogaflex_contact_form_page(){
 
 
 // Contact Details functions
+
+//Phone numbers section
 function yogaflex_contact_detail_section(){
     echo 'Insert telephone numbers for header, footer and contact page.';
 }
@@ -177,22 +190,32 @@ function yogaflex_contact_detail_section(){
 function yogaflex_header_phone(){
     $phone1 = esc_attr( get_option( 'telephone1' ));
     echo '<p>Input Your telephone number for header section.</p>
-    <input type="text" name="phone1" value="'.$phone1.'" placeholder="Header phone number">';
+    <input type="tel" name="telephone1" id="telephone1" value="'.$phone1.'" placeholder="Header phone number">';
 }
 
 function yogaflex_footer_phone(){
     $phone2= esc_attr( get_option( 'telephone2' ));
     $phone3 = esc_attr( get_option( 'telephone3' ));
     echo '<p>Input Your telephone numbers for footer section.</p>
-    <input type="text" name="phone2" id="phone2" value="'.$phone2.'" placeholder="First phone number">
-    <input type="text" name="phone3" id="phone3" value="'.$phone3.'" placeholder="Second phone number">';
+    <input type="tel" name="telephone2" id="telephone2" value="'.$phone2.'" placeholder="First phone number">
+    <input type="tel" name="telephone3" id="telephone3" value="'.$phone3.'" placeholder="Second phone number">';
 }
 
 function yogaflex_contact_page_phone(){
     $phone4 = esc_attr( get_option( 'telephone4' ));
     echo '<p>Input Your main telephone number for contact page.</p>
-    <input type="text" name="phone4" value="'.$phone4.'" placeholder="Main phone number"><br/>';
+    <input type="tel" name="telephone4" id="telephone4" value="'.$phone4.'" placeholder="Main phone number"><br/>';
 }
+
+function yogaflex_contact_hours(){
+    $hoursfrom = esc_attr( get_option( 'hoursfrom' ));
+    $hourstill = esc_attr( get_option( 'hourstill' ));
+    echo '<p>Define calling time available to contact Your phone (time format <strong>hour : minutes am/pm</strong>).</p>
+    <span>From: </span><input type="time" maxlength="5" size="5" name="hoursfrom" id="hoursfrom" value="'.$hoursfrom.'" placeholder="From"><span style="margin-right:30px;"> hours; </span>
+    <span>Till: </span><input type="time" maxlength="5" size="5" name="hourstill" id="hourstill" value="'.$hourstill.'" placeholder="Till"><span> hours; </span>';
+}
+
+//Address details section
 
 function yogaflex_address_detail_section(){
     echo 'Insert address details for contact page.';
@@ -216,27 +239,57 @@ function yogaflex_street(){
     <input type="text" name="street" value="'.$street.'" placeholder="Street">';
 }
 
-function yogaflex_number(){
-    $number = esc_attr( get_option( 'number' ));
+function yogaflex_housenumber(){
+    $number = esc_attr( get_option( 'housenumber' ));
     echo '<p>Input Your House Number.</p>
-    <input type="text" name="number" value="'.$number.'" placeholder="House Number">';
+    <input type="text" name="housenumber" id="housenumber" value="'.$number.'" placeholder="House Number">';
 }
 
 function yogaflex_zip_code(){
-    $zip_code = esc_attr( get_option( 'zip_code' ));
+    $zipcode = esc_attr( get_option( 'zipcode' ));
     echo '<p>Input Your Zip Code.</p>
-    <input type="text" name="zipcode" value="'.$zip_code.'" placeholder="Zip Code">';
+    <input type="text" name="zipcode" value="'.$zipcode.'" placeholder="Zip Code">';
 }
 
 function yogaflex_email(){
-    $local_part = esc_attr( get_option( 'local_part' ));
+    $localpart = esc_attr( get_option( 'localpart' ));
     $domain = esc_attr( get_option( 'domain' ));
     echo '<p>Input Your e-mail address.</p>
-    <input type="text" name="local_part" value="'.$local_part.'" placeholder="Local Part"><spanp>@</span>
-    <input type="text" name="domain" value="'.$domain.'" placeholder="Domain">';
+    <input type="text" name="localpart" value="'.$localpart.'" placeholder="Local Part"><span>@</span>
+    <input type="text" name="domain" id="domain" value="'.$domain.'" placeholder="Domain">';
 }
+
+// Social network section
+
+function yogaflex_social_detail_section(){
+    echo 'Enter Your social networks details for header and footer section.';
+}
+
+function yogaflex_details_facebook(){
+    $yogaflex_facebook = esc_attr( get_option( 'facebook_details' ));
+    echo '<input type="text" name="facebook_details" value="'.$yogaflex_facebook.'" placeholder="Facebook handler">';
+}
+
+function yogaflex_details_twitter(){
+    $yogaflex_twitter = esc_attr( get_option( 'twitter_details' ));
+    echo '<input type="text" name="twitter_details" value="'.$yogaflex_twitter.'" placeholder="Twitter handler">
+    <p>Input Your Twitter username without the @ character.</p>';
+}
+
+function yogaflex_details_instagram(){
+    $yogaflex_instagram = esc_attr( get_option( 'instagram_details' ));
+    echo '<input type="text" name="instagram_details" value="'.$yogaflex_instagram.'" placeholder="Instagram handler">';
+}
+
+function yogaflex_details_youtube(){
+    $yogaflex_youtube = esc_attr( get_option( 'youtube_details' ));
+    echo '<input type="text" name="youtube_details" value="'.$yogaflex_youtube.'" placeholder="YouTube handler">';
+}
+
 
         // include contact details page file
 function yogaflex_theme_contact_details_page(){
     require_once( get_template_directory().'/inc/templates/yogaflex-contact-details.php' );
 }
+
+
