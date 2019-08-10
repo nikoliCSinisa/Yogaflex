@@ -28,12 +28,18 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-6 col-sm-6 col-8 header-top-left no-padding">
-							<ul>
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-behance"></i></a></li>
-							</ul>
+						<?php 
+								$yogaflex_facebook = esc_attr( get_option( 'facebook_details' ));
+								$yogaflex_twitter = esc_attr( get_option( 'twitter_details' ));
+								$yogaflex_instagram = esc_attr( get_option( 'instagram_details' ));
+								$yogaflex_youtube = esc_attr( get_option( 'youtube_details' ));
+							echo '<ul>';
+								echo '<li><a href="https://facebook.com/'.$yogaflex_facebook.'"><i class="fa fa-facebook"></i></a></li>';
+								echo '<li><a href="https://twitter.com/'.$yogaflex_twitter.'"><i class="fa fa-twitter"></i></a></li>';
+								echo '<li><a href="https://instagram.com/'.$yogaflex_instagram.'"><i class="fa fa-instagram"></i></a></li>';
+								echo '<li><a href="https://youtube.com/'.$yogaflex_youtube.'"><i class="fa fa-youtube"></i></a></li>';
+							echo '</ul>';
+						?>
 						</div><!-- .header-top-left -->
 						<div class="col-lg-6 col-sm-6 col-4 header-top-right no-padding">
 							<?php 

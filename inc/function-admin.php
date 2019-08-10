@@ -17,6 +17,7 @@ function yogaflex_add_admin_page(){
     add_submenu_page('yogaflex_theme', 'About Author Options', 'Author Widget', 'manage_options', 'yogaflex_theme', 'yogaflex_theme_create_page' );
     add_submenu_page('yogaflex_theme' , 'Yogaflex Contact Form', 'Contact Form', 'manage_options', 'yogaflex_theme_contact_form', 'yogaflex_contact_form_page' );
     add_submenu_page('yogaflex_theme' , 'Yogaflex Contact Details', 'Contact Details', 'manage_options', 'yogaflex_theme_contact_details', 'yogaflex_theme_contact_details_page' );
+    add_submenu_page('yogaflex_theme' , 'Yogaflex Trainers', 'Trainers', 'manage_options', 'yogaflex_theme_trainers', 'yogaflex_theme_trainers_page' );
 
     // Activate custom settings
     add_action( "admin_init", 'yogaflex_custom_settings');
@@ -26,7 +27,11 @@ function yogaflex_add_admin_page(){
 add_action('admin_menu', 'yogaflex_add_admin_page' );
 
 function yogaflex_custom_settings(){
-    //Sidebar Author Options
+
+    //=============================================================================================
+    //                                  Sidebar Author Options
+    //=============================================================================================
+
     register_setting( 'yogaflex-settings-group', 'profile_picture' );
     register_setting( 'yogaflex-settings-group', 'first_name' );
     register_setting( 'yogaflex-settings-group', 'last_name' );
@@ -48,16 +53,20 @@ function yogaflex_custom_settings(){
     add_settings_field( 'sidebar-git', 'Git handler', 'yogaflex_sidebar_git', 'yogaflex_theme', 'yogaflex-sidebar-options' );
     add_settings_field( 'sidebar-behance', 'Behance handler', 'yogaflex_sidebar_behance', 'yogaflex_theme', 'yogaflex-sidebar-options' );
 
+    //=============================================================================================
+    //                                    Contact Form Options
+    //=============================================================================================
 
-    // Contact Form Options
     register_setting( 'yogaflex-contact-options', 'activate_contact' );
 
     add_settings_section( 'yogaflex-contact-section', 'Messages page', 'yogaflex_contact_section', 'yogaflex_theme_contact_form' );
 
     add_settings_field( 'activate-form', 'Activate Messages page', 'yogaflex_activate_contact', 'yogaflex_theme_contact_form', 'yogaflex-contact-section' );
 
+    //=============================================================================================
+    //                                  Contact Details Options
+    //=============================================================================================
 
-    // Contact Details Options
     register_setting( 'yogaflex-details-group', 'telephone1' );
     register_setting( 'yogaflex-details-group', 'telephone2' );
     register_setting( 'yogaflex-details-group', 'telephone3' );
@@ -94,9 +103,21 @@ function yogaflex_custom_settings(){
     add_settings_field( 'details-social-twitter', 'Twitter handler', 'yogaflex_details_twitter', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
     add_settings_field( 'details-social-instagram', 'Instagram handler', 'yogaflex_details_instagram', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
     add_settings_field( 'details-social-youtube', 'YouTube handler', 'yogaflex_details_youtube', 'yogaflex_theme_contact_details', 'yogaflex-social-detail-section' );
+
+ // ================================================================================================
+ //                                     Trainers Options
+ // ================================================================================================
+
+    register_setting( 'yogaflex-trainers-group', 'trainer_name' );
+
+    add_settings_section( 'yogaflex-trainers-section', 'About Trainer', 'yogaflex_trainer_section', 'yogaflex_theme_trainers' );
+
+
 }
 
-// Author sidebar form functions
+//=============================================================================================
+//                              Author sidebar form functions
+//=============================================================================================
 
 function yogaflex_sidebar_options(){
     echo 'Customize sidebar Widget for Author details';
@@ -159,8 +180,9 @@ function yogaflex_theme_create_page(){
 }
 
 
-
-// Contact Form functions
+//=============================================================================================
+//                                  Contact Form functions
+//=============================================================================================
 
 function yogaflex_contact_section(){
     echo 'Activate and Deactivate the built-in Messages admin page to handle Contact Form messages.';
@@ -179,10 +201,15 @@ function yogaflex_contact_form_page(){
 
 
 
+//=============================================================================================
+//                              Contact Details functions
+//=============================================================================================
 
-// Contact Details functions
+// ********************************************************************************************
+//                                  Phone numbers section
+// ********************************************************************************************
 
-//Phone numbers section
+
 function yogaflex_contact_detail_section(){
     echo 'Insert telephone numbers for header, footer and contact page.';
 }
@@ -214,8 +241,9 @@ function yogaflex_contact_hours(){
     <span>From: </span><input type="time" maxlength="5" size="5" name="hoursfrom" id="hoursfrom" value="'.$hoursfrom.'" placeholder="From"><span style="margin-right:30px;"> hours; </span>
     <span>Till: </span><input type="time" maxlength="5" size="5" name="hourstill" id="hourstill" value="'.$hourstill.'" placeholder="Till"><span> hours; </span>';
 }
-
-//Address details section
+// ********************************************************************************************
+//                              Address details section
+// ********************************************************************************************
 
 function yogaflex_address_detail_section(){
     echo 'Insert address details for contact page.';
@@ -259,7 +287,9 @@ function yogaflex_email(){
     <input type="text" name="domain" id="domain" value="'.$domain.'" placeholder="Domain">';
 }
 
-// Social network section
+// ********************************************************************************************
+//                              Social network section
+// ********************************************************************************************=
 
 function yogaflex_social_detail_section(){
     echo 'Enter Your social networks details for header and footer section.';
@@ -290,6 +320,19 @@ function yogaflex_details_youtube(){
         // include contact details page file
 function yogaflex_theme_contact_details_page(){
     require_once( get_template_directory().'/inc/templates/yogaflex-contact-details.php' );
+}
+
+// ================================================================================================================
+//                                      Trainers Details functions
+// ================================================================================================================
+
+function yogaflex_trainer_section(){
+    echo 'Add Trainers and Arrange Trainers Page.';
+}
+
+        // include trainers page file
+function yogaflex_theme_trainers_page(){
+    require_once( get_template_directory().'/inc/templates/yogaflex-trainers.php' );
 }
 
 
