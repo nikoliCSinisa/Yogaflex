@@ -27,7 +27,12 @@
     									$hourstill = esc_attr( get_option( 'hourstill' ));
 								?>
 									<div class="row">
-										<div class="map-wrap" style="width:100%; height: 445px;" id="map"></div>
+										<div class="col-lg-12 d-flex flex-column mb-5">
+											<?php  
+											// If there's a content in admin section it will be shown here
+											the_content();	
+											?>
+										</div>
 										<div class="col-lg-4 d-flex flex-column address-wrap">
 											<div class="single-contact-address d-flex flex-row">
 												<div class="icon">
@@ -59,7 +64,7 @@
 												</div>
 											</div>
 										</div>
-										<!-- place for Contact Form -->
+										<?php get_template_part( 'inc/contact', 'form' );	?>
 									</div>	
 								<?php
 									}

@@ -194,7 +194,7 @@ function yogaflex_activate_contact(){
     echo '<label><input type="checkbox" id="activate_contact"  name="activate_contact" value="1" '.$checked.' /></label>';
 }
 
-        // include contact form page file
+// include contact form page file
 function yogaflex_contact_form_page(){
     require_once( get_template_directory().'/inc/templates/yogaflex-contact-form.php' );
 }
